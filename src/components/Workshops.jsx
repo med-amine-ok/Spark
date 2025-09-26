@@ -434,68 +434,6 @@ const Workshops = () => {
             ))}
           </motion.div>
         )}
-
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <GlassCard className="p-8 text-center">
-            <motion.div 
-              className="w-16 h-16 mx-auto mb-6 rounded-3xl flex items-center justify-center shadow-2xl relative overflow-hidden backdrop-blur-2xl border border-white/30"
-              style={{
-                background: 'linear-gradient(135deg, rgba(255,107,53,0.3) 0%, rgba(247,147,30,0.2) 50%, rgba(255,255,255,0.1) 100%)',
-                boxShadow: '0 8px 24px rgba(255,107,53,0.3), inset 0 1px 0 rgba(255,255,255,0.4)'
-              }}
-              initial={{ scale: 0, rotate: -180 }}
-              whileInView={{ scale: 1, rotate: 0 }}
-              transition={{ 
-                type: 'spring',
-                stiffness: 400,
-                damping: 20,
-                delay: 0.6
-              }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.1, rotate: 5 }}
-            >
-              <div 
-                className="absolute inset-0 rounded-3xl"
-                style={{
-                  background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6) 0%, transparent 70%)',
-                }}
-              />
-              <Award className="w-8 h-8 text-white relative z-10" />
-            </motion.div>
-            
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Ready to Start Learning?
-            </h3>
-            <p className="text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Join our workshops and take your skills to the next level. All workshops include hands-on projects, 
-              mentorship, and certificates upon completion.
-            </p>
-            
-            <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-2xl font-semibold backdrop-blur-2xl border border-white/30 text-white hover:border-white/40 transition-all duration-300 relative overflow-hidden group shadow-xl"
-              style={{
-                background: 'linear-gradient(135deg, rgba(255,107,53,0.3) 0%, rgba(247,147,30,0.2) 50%, rgba(255,255,255,0.1) 100%)',
-                boxShadow: '0 8px 24px rgba(255,107,53,0.2), inset 0 1px 0 rgba(255,255,255,0.3)'
-              }}
-            >
-              <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"
-                style={{
-                  background: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.3) 0%, transparent 70%)',
-                }}
-              />
-              <span className="relative z-10">View Workshop Schedule</span>
-            </motion.button>
-          </GlassCard>
-        </motion.div>
       </div>
     </section>
     </>
