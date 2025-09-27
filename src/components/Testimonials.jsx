@@ -49,61 +49,6 @@ const GlassCard = ({ children, className = "", delay = 0, ...props }) => (
   </motion.div>
 );
 
-const TrustLogoSlider = () => {
-  const logos = [
-    { name: "Microsoft", logo: "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=120&h=60&fit=crop" },
-    { name: "NVIDIA", logo: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=120&h=60&fit=crop" },
-    { name: "Google", logo: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=120&h=60&fit=crop" },
-    { name: "Arduino", logo: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=120&h=60&fit=crop" },
-    { name: "Boston Dynamics", logo: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=120&h=60&fit=crop" },
-    { name: "IEEE", logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=120&h=60&fit=crop" },
-    { name: "OpenAI", logo: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=120&h=60&fit=crop" },
-    { name: "Tesla", logo: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=120&h=60&fit=crop" }
-  ];
-
-  const doubledLogos = [...logos, ...logos];
-
-  return (
-    <div className="relative overflow-hidden w-full ">
-      
-      <motion.div
-        className="flex gap-12 items-center"
-        animate={{ x: [0, -100 * logos.length] }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-        style={{ width: `${200 * logos.length}px` }}
-      >
-        {doubledLogos.map((logo, index) => (
-          <motion.div
-            key={`${logo.name}-${index}`}
-            className="flex-shrink-0 w-24 h-12 rounded-xl backdrop-blur-2xl border border-white/20 overflow-hidden shadow-lg group hover:border-white/30 transition-all duration-300"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-              boxShadow: '0 4px 16px rgba(255,255,255,0.1), inset 0 1px 0 rgba(255,255,255,0.2)'
-            }}
-            whileHover={{ scale: 1.05 }}
-          >
-            <div 
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
-              style={{
-                background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 70%)',
-              }}
-            />
-            <img
-              src={logo.logo}
-              alt={logo.name}
-              className="w-full h-full object-contain p-2 filter brightness-0 invert opacity-60 group-hover:opacity-80 transition-opacity duration-300"
-            />
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
-  );
-};
-
 const Testimonials = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
@@ -305,39 +250,7 @@ const Testimonials = () => {
           </div>
         </motion.div>
 
-        {/* Trusted By Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-(-10)"
-        >
-          <motion.div 
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-3xl border border-white/25 mb-8 shadow-xl relative overflow-hidden group"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 50%, rgba(255,107,53,0.08) 100%)',
-              boxShadow: '0 4px 20px rgba(255,107,53,0.15), inset 0 1px 0 rgba(255,255,255,0.2)'
-            }}
-            whileHover={{ scale: 1.02, y: -2 }}
-          >
-            <div 
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"
-              style={{
-                background: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.3) 0%, transparent 70%)',
-              }}
-            />
-            <Star className="w-5 h-5 text-orange-300 relative z-10" />
-            <span className="text-white/90 font-medium relative z-10">Trusted By</span>
-          </motion.div>
-
-          <h3 className="text-3xl font-bold text-white mb-4">Industry Leaders</h3>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Collaborating with world-class technology companies to provide real-world experience
-          </p>
-
-          <TrustLogoSlider />
-        </motion.div>
+       
       </div>
     </section>
   );

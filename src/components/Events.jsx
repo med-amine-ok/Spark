@@ -1,6 +1,352 @@
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { Calendar, MapPin, Trophy, Users, ExternalLink, Rocket, Award, Star } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
+import { Calendar, MapPin, Trophy, Users, ExternalLink, Rocket, Award, Star, Zap, Target, Gamepad2, Code } from 'lucide-react';
+
+// Afrobot Card Component
+const AfrobotCard = ({ event, delay }) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/afrobot");
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ 
+        type: 'spring', 
+        stiffness: 300, 
+        damping: 25,
+        delay 
+      }}
+      viewport={{ once: true }}
+      className="relative overflow-hidden rounded-2xl p-0 cursor-pointer group"
+      style={{
+        background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #ef4444 100%)',
+      }}
+      whileHover={{ 
+        scale: 1.02,
+        y: -4,
+      }}
+      onClick={handleNavigate}
+    >
+      {/* Background Image */}
+      <div className="relative h-48 overflow-hidden">
+        <img 
+          src={event.image} 
+          alt={event.title} 
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+        
+        {/* Status Badge */}
+        <div className="absolute top-4 right-4">
+          <span className="px-3 py-1 bg-yellow-400 text-black text-xs font-bold rounded-full">
+            UPCOMING
+          </span>
+        </div>
+        
+        {/* Title Overlay */}
+        <div className="absolute bottom-4 left-4 right-4">
+          <h1 className="text-3xl md:text-4xl font-black text-white mb-2 bg-gradient-to-r from-green-400 via-blue-400 to-red-400 bg-clip-text text-transparent">
+            AFROBOT 2025
+          </h1>
+          <p className="text-white/90 text-sm font-medium">National Robotics Festival of Algeria</p>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6 bg-white/95 backdrop-blur-sm">
+        <p className="text-gray-700 text-sm mb-4 leading-relaxed">
+          The premier youth-led robotics festival featuring competitions, workshops, and tech showcases, supported by the Wilaya of Algiers.
+        </p>
+        
+        <div className="space-y-2 mb-4">
+          <div className="flex items-center text-sm text-gray-600">
+            <Calendar className="w-4 h-4 mr-2 text-blue-500" />
+            July 7, 2025
+          </div>
+          <div className="flex items-center text-sm text-gray-600">
+            <MapPin className="w-4 h-4 mr-2 text-red-500" />
+            Open Air Theater, Sablettes, Algiers
+          </div>
+          <div className="flex items-center text-sm text-gray-600">
+            <Users className="w-4 h-4 mr-2 text-green-500" />
+            {event.participants}
+          </div>
+          <div className="flex items-center text-sm text-gray-600">
+            <Trophy className="w-4 h-4 mr-2 text-yellow-500" />
+            Prizes & Recognition
+          </div>
+        </div>
+
+        {/* Competition Icons */}
+        <div className="flex justify-between items-center mb-4 p-3 bg-gradient-to-r from-green-100/50 to-blue-100/50 rounded-lg">
+          <div className="flex items-center space-x-1">
+            <Zap className="w-5 h-5 text-red-500" />
+            <span className="text-xs text-gray-600 font-medium">Robot Fight</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <Target className="w-5 h-5 text-blue-500" />
+            <span className="text-xs text-gray-600 font-medium">Line Follower</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <Trophy className="w-5 h-5 text-green-500" />
+            <span className="text-xs text-gray-600 font-medium">Obstacle Course</span>
+          </div>
+        </div>
+        
+        <button className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-3 px-4 rounded-full text-sm transition-all shadow-lg hover:shadow-xl transform hover:scale-105 group">
+          <span className="flex items-center justify-center">
+            Learn More
+            <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+          </span>
+        </button>
+      </div>
+    </motion.div>
+  );
+};
+
+// GameCraft Card Component
+const GameCraftCard = ({ event, delay }) => {
+   const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/gamecraft");
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ 
+        type: 'spring', 
+        stiffness: 300, 
+        damping: 25,
+        delay 
+      }}
+      viewport={{ once: true }}
+      className="relative overflow-hidden rounded-2xl bg-black text-white cursor-pointer group font-mono"
+      whileHover={{ 
+        scale: 1.02,
+        y: -4,
+      }}
+      onClick={handleNavigate}
+    >
+      {/* Header with gradient */}
+      <div className="relative p-6 bg-gradient-to-br from-purple-900/30 to-red-900/30">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-red-500 rounded-lg flex items-center justify-center">
+              <Gamepad2 className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-red-400 bg-clip-text text-transparent">
+              GAMECRAFT
+            </span>
+          </div>
+          <span className="px-3 py-1 bg-purple-500/20 text-purple-300 border border-purple-500/30 rounded-full text-xs font-medium">
+            COMING SOON
+          </span>
+        </div>
+
+        <div className="text-4xl font-black leading-tight mb-2">
+          <span className="block bg-gradient-to-r from-purple-400 via-red-400 to-purple-400 bg-clip-text text-transparent">
+            CREATE
+          </span>
+          <span className="block text-lg text-gray-300 font-normal">Code. Compete.</span>
+        </div>
+      </div>
+
+      {/* Code Preview */}
+      <div className="p-6 bg-gray-900 border-t border-purple-500/30">
+        <div className="space-y-2 text-sm font-mono mb-4">
+          <div className="flex items-center space-x-2 text-green-400">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span>// GameCraft 2025 Loading...</span>
+          </div>
+          <div className="text-purple-400">
+            const <span className="text-white">competition</span> = {"{"}
+          </div>
+          <div className="text-gray-400 ml-4">
+            duration: <span className="text-yellow-400">48</span>h,
+          </div>
+          <div className="text-gray-400 ml-4">
+            teams: <span className="text-green-400">"unlimited"</span>,
+          </div>
+          <div className="text-purple-400">{"};"}</div>
+        </div>
+
+        <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+          Challenge yourself to design, code, and present your own game within strict time constraints. Solo or team - your choice.
+        </p>
+        
+        <div className="space-y-2 mb-4">
+          <div className="flex items-center text-sm text-gray-400">
+            <Calendar className="w-4 h-4 mr-2 text-purple-400" />
+            February 15-16, 2025
+          </div>
+          <div className="flex items-center text-sm text-gray-400">
+            <Trophy className="w-4 h-4 mr-2 text-red-400" />
+            100K DA Prize Pool
+          </div>
+          <div className="flex items-center text-sm text-gray-400">
+            <Code className="w-4 h-4 mr-2 text-green-400" />
+            Unity, Godot, HTML5 & More
+          </div>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 mb-4 p-3 bg-black/50 rounded-lg border border-purple-500/20">
+          <div className="text-center">
+            <div className="text-lg font-bold text-purple-400">48h</div>
+            <div className="text-xs text-gray-500">Competition</div>
+          </div>
+          <div className="text-center">
+            <div className="text-lg font-bold text-red-400">100K</div>
+            <div className="text-xs text-gray-500">Prize Pool</div>
+          </div>
+          <div className="text-center">
+            <div className="text-lg font-bold text-purple-400">200+</div>
+            <div className="text-xs text-gray-500">Participants</div>
+          </div>
+        </div>
+        
+        <button className="w-full group relative px-6 py-3 bg-transparent border-2 border-purple-500 text-purple-400 font-bold rounded-lg overflow-hidden transition-all duration-300 hover:text-white">
+          <span className="relative z-10 flex items-center justify-center">
+            REGISTER INTEREST
+            <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-red-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+        </button>
+      </div>
+    </motion.div>
+  );
+};
+
+// Polymaze Card Component
+const PolymazeCard = ({ event, delay }) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/polymaze");
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ 
+        type: 'spring', 
+        stiffness: 300, 
+        damping: 25,
+        delay 
+      }}
+      viewport={{ once: true }}
+      className="relative overflow-hidden rounded-2xl bg-black text-white cursor-pointer group"
+      whileHover={{ 
+        scale: 1.02,
+        y: -4,
+      }}
+      onClick={handleNavigate}
+    >
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-600/20 via-transparent to-green-600/20"></div>
+      <div className="absolute -inset-2 bg-gradient-to-r from-orange-400/10 to-green-400/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+      
+      <div className="relative z-10 p-6">
+        <div className="flex items-center justify-between mb-6">
+          <div className="text-2xl font-black tracking-wider">
+            <span className="text-white">POLY</span>
+            <span className="text-orange-400">MAZE</span>
+          </div>
+          <span className="px-3 py-1 bg-green-500/20 text-green-300 border border-green-500/30 rounded-full text-xs font-medium">
+            COMPLETED
+          </span>
+        </div>
+
+        {/* Hero Image */}
+        <div className="relative mb-6">
+          <div className="w-full h-32 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl flex items-center justify-center overflow-hidden">
+            <img 
+              src={event.image} 
+              alt={event.title} 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          </div>
+        </div>
+
+        <div className="space-y-4 mb-6">
+          <div>
+            <h3 className="text-lg font-black text-white mb-2">AUTONOMOUS MAZE NAVIGATION</h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Pure algorithmic brilliance meets robotics. No remote control - just sensors, programming, and innovation navigating complex mazes.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <div className="flex items-center text-sm text-gray-400">
+              <Calendar className="w-4 h-4 mr-2 text-orange-400" />
+              June 30, 2025
+            </div>
+            <div className="flex items-center text-sm text-gray-400">
+              <MapPin className="w-4 h-4 mr-2 text-green-400" />
+              École Nationale Polytechnique, Algiers
+            </div>
+            <div className="flex items-center text-sm text-gray-400">
+              <Users className="w-4 h-4 mr-2 text-orange-400" />
+              International Participation
+            </div>
+          </div>
+        </div>
+
+        {/* Competition Phases */}
+        <div className="grid grid-cols-3 gap-2 mb-6 p-3 bg-gray-900/50 rounded-xl border border-gray-800">
+          <div className="text-center">
+            <div className="text-sm font-black text-orange-400">QUALIFIERS</div>
+            <div className="text-xs text-gray-500">Multiple Waves</div>
+          </div>
+          <div className="text-center">
+            <div className="text-sm font-black text-green-400">SEMI-FINALS</div>
+            <div className="text-xs text-gray-500">Best Teams</div>
+          </div>
+          <div className="text-center">
+            <div className="text-sm font-black text-yellow-400">FINALS</div>
+            <div className="text-xs text-gray-500">Championship</div>
+          </div>
+        </div>
+
+        <div className="bg-gray-900/30 p-3 rounded-xl border border-gray-700 mb-4">
+          <div className="text-center">
+            <div className="text-sm font-bold text-white mb-1">WINNERS</div>
+            <div className="flex justify-center items-center space-x-4">
+              <div className="text-center">
+                <div className="text-lg font-bold text-yellow-400">1st</div>
+                <div className="text-xs text-gray-400">Team Alpha</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-bold text-gray-400">2nd</div>
+                <div className="text-xs text-gray-400">Team Beta</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-bold text-orange-400">3rd</div>
+                <div className="text-xs text-gray-400">Team Gamma</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button className="w-full group relative px-6 py-3 border-2 border-orange-400 text-orange-400 font-bold tracking-wider transition-all duration-300 hover:bg-orange-400 hover:text-black overflow-hidden">
+          <span className="relative z-10 flex items-center justify-center">
+            VIEW RESULTS
+            <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+          </span>
+          <div className="absolute -inset-1 bg-gradient-to-r from-orange-400/20 to-green-400/20 rounded blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </button>
+      </div>
+    </motion.div>
+  );
+};
 
 const GlassCard = ({ children, className = "", delay = 0, ...props }) => (
   <motion.div
@@ -49,98 +395,37 @@ const GlassCard = ({ children, className = "", delay = 0, ...props }) => (
   </motion.div>
 );
 
-const ActionButton = ({ children, variant = "primary", className = "", ...props }) => (
-  <motion.button
-    whileHover={{ scale: 1.02, y: -1 }}
-    whileTap={{ scale: 0.98 }}
-    className={`
-      relative overflow-hidden font-medium rounded-xl px-6 py-3 text-sm
-      backdrop-blur-2xl border transition-all duration-300 group w-full
-      ${variant === 'primary' 
-        ? 'bg-white/15 text-white border-white/25 hover:bg-white/20 hover:border-white/35' 
-        : 'bg-white/8 text-white/80 border-white/20 hover:bg-white/15 hover:border-white/25'
-      }
-      ${className}
-    `}
-    style={{
-      background: variant === 'primary' 
-        ? 'linear-gradient(135deg, rgba(255,107,53,0.2) 0%, rgba(247,147,30,0.15) 50%, rgba(255,255,255,0.1) 100%)'
-        : 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%)',
-      boxShadow: '0 4px 16px rgba(255,107,53,0.15), inset 0 1px 0 rgba(255,255,255,0.2)'
-    }}
-    {...props}
-  >
-    <div 
-      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
-      style={{
-        background: variant === 'primary'
-          ? 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.3) 0%, transparent 70%)'
-          : 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.2) 0%, transparent 70%)',
-      }}
-    />
-    <span className="relative flex items-center justify-center">
-      {children}
-    </span>
-  </motion.button>
-);
-
-const StatusBadge = ({ status }) => (
-  <span 
-    className={`
-      px-3 py-1 rounded-full text-xs font-medium backdrop-blur-xl border
-      ${status === 'upcoming' 
-        ? 'bg-green-500/20 text-green-300 border-green-500/30' 
-        : 'bg-blue-500/20 text-blue-300 border-blue-500/30'
-      }
-    `}
-    style={{
-      boxShadow: '0 2px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1)'
-    }}
-  >
-    {status}
-  </span>
-);
-
-const InfoItem = ({ icon: Icon, children }) => (
-  <div className="flex items-center text-sm text-white/70">
-    <Icon className="w-4 h-4 mr-2 text-orange-300" />
-    {children}
-  </div>
-);
-
 const Events = () => {
-  const navigate = useNavigate();
-
   const majorEvents = [
     {
       title: 'Afrobot',
       description: 'Our flagship robotics competition where teams design and build autonomous robots to compete in various challenging tasks.',
-      date: 'March 15-17, 2024',
-      location: 'University Main Hall',
+      date: 'July 7, 2025',
+      location: 'Open Air Theater, Sablettes, Algiers',
       status: 'upcoming',
       participants: '200+ teams',
-      prize: '$5,000',
+      prize: 'Prizes & Recognition',
       image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+    },
+    {
+      title: 'GameCraft',
+      description: 'Game development competition where creativity meets coding. Build the next breakthrough gaming experience.',
+      date: 'February 15-16, 2025',
+      location: 'ENP Algiers',
+      status: 'planned',
+      participants: 'Open Registration',
+      prize: '100K DA',
+      image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
     },
     {
       title: 'Polymaze',
       description: 'An innovative maze-solving challenge combining algorithmic thinking with physical robot navigation.',
-      date: 'April 22-24, 2024',
-      location: 'Engineering Building',
-      status: 'upcoming',
-      participants: '150+ teams',
-      prize: '$3,000',
+      date: 'June 30, 2025',
+      location: 'École Nationale Polytechnique',
+      status: 'completed',
+      participants: 'International Teams',
+      prize: 'Championship Titles',
       image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
-    },
-    {
-      title: 'Game Craft',
-      description: 'Game development competition where creativity meets coding. Build the next breakthrough gaming experience.',
-      date: 'Coming Soon',
-      location: 'TBA',
-      status: 'planned',
-      participants: 'Open Registration',
-      prize: 'TBA',
-      image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
     }
   ];
 
@@ -216,35 +501,9 @@ const Events = () => {
             - Major Events
           </motion.h3>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {majorEvents.map((event, index) => (
-              <GlassCard key={event.title} delay={index * 0.1}>
-                <div className="flex items-start justify-between mb-4">
-                  <h4 className="text-lg font-bold text-white">{event.title}</h4>
-                  <StatusBadge status={event.status} />
-                </div>
-
-                <img src={event.image} alt={event.title} className="w-full h-32 object-cover rounded-lg mb-4" />
-
-                <p className="text-white/70 text-sm mb-4 line-clamp-3">
-                  {event.description}
-                </p>
-                
-                <div className="space-y-2 mb-4">
-                  <InfoItem icon={Calendar}>{event.date}</InfoItem>
-                  <InfoItem icon={MapPin}>{event.location}</InfoItem>
-                  <InfoItem icon={Users}>{event.participants}</InfoItem>
-                  <InfoItem icon={Trophy}>Prize Pool: {event.prize}</InfoItem>
-                </div>
-                
-                <ActionButton
-                  onClick={() => navigate(`/${event.title.toLowerCase().replace(/\s+/g, '')}`)}
-                  variant={event.status === 'upcoming' ? 'primary' : 'secondary'}
-                >
-                  {event.status === 'upcoming' ? 'Register Now' : 'Stay Updated'}
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                </ActionButton>
-              </GlassCard>
-            ))}
+            <AfrobotCard event={majorEvents[0]} delay={0} />
+            <GameCraftCard event={majorEvents[1]} delay={0.1} />
+            <PolymazeCard event={majorEvents[2]} delay={0.2} />
           </div>
         </div>
 
