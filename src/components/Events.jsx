@@ -7,8 +7,10 @@ const AfrobotCard = ({ event, delay }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/afrobot");
-  };
+  navigate("/afrobot");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
 
   return (
     <motion.div
@@ -21,7 +23,7 @@ const AfrobotCard = ({ event, delay }) => {
         delay 
       }}
       viewport={{ once: true }}
-      className="relative overflow-hidden rounded-2xl p-0 cursor-pointer group"
+      className="relative overflow-hidden rounded-2xl flex flex-col h-auto  cursor-pointer group"
       style={{
         background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #ef4444 100%)',
       }}
@@ -50,54 +52,74 @@ const AfrobotCard = ({ event, delay }) => {
         {/* Title Overlay */}
         <div className="absolute bottom-4 left-4 right-4">
           <h1 className="text-3xl md:text-4xl font-black text-white mb-2 bg-gradient-to-r from-green-400 via-blue-400 to-red-400 bg-clip-text text-transparent">
-            AFROBOT 2025
+            Afrobot 2025
           </h1>
           <p className="text-white/90 text-sm font-medium">National Robotics Festival of Algeria</p>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-6 bg-white/95 backdrop-blur-sm">
-        <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-          The premier youth-led robotics festival featuring competitions, workshops, and tech showcases, supported by the Wilaya of Algiers.
-        </p>
-        
-        <div className="space-y-2 mb-4">
-          <div className="flex items-center text-sm text-gray-600">
-            <Calendar className="w-4 h-4 mr-2 text-blue-500" />
-            July 7, 2025
+      <div className="p-6 bg-white/95 backdrop-blur-sm flex flex-col flex-grow">
+        <div className="flex-grow">
+          <p className="text-gray-700 text-sm mb-4 leading-relaxed">
+            The premier youth-led robotics festival featuring competitions, workshops, and tech showcases, supported by the Wilaya of Algiers.
+          </p>
+          
+          <div className="space-y-2 mb-4">
+            <div className="flex items-center text-sm text-gray-600">
+              <Calendar className="w-4 h-4 mr-2 text-blue-500" />
+              July 7, 2025
+            </div>
+            <div className="flex items-center text-sm text-gray-600">
+              <MapPin className="w-4 h-4 mr-2 text-red-500" />
+              Open Air Theater, Sablettes, Algiers
+            </div>
+            <div className="flex items-center text-sm text-gray-600">
+              <Users className="w-4 h-4 mr-2 text-green-500" />
+              {event.participants}
+            </div>
+            <div className="flex items-center text-sm text-gray-600">
+              <Trophy className="w-4 h-4 mr-2 text-yellow-500" />
+              Prizes & Recognition
+            </div>
           </div>
-          <div className="flex items-center text-sm text-gray-600">
-            <MapPin className="w-4 h-4 mr-2 text-red-500" />
-            Open Air Theater, Sablettes, Algiers
-          </div>
-          <div className="flex items-center text-sm text-gray-600">
-            <Users className="w-4 h-4 mr-2 text-green-500" />
-            {event.participants}
-          </div>
-          <div className="flex items-center text-sm text-gray-600">
-            <Trophy className="w-4 h-4 mr-2 text-yellow-500" />
-            Prizes & Recognition
-          </div>
-        </div>
 
-        {/* Competition Icons */}
-        <div className="flex justify-between items-center mb-4 p-3 bg-gradient-to-r from-green-100/50 to-blue-100/50 rounded-lg">
-          <div className="flex items-center space-x-1">
-            <Zap className="w-5 h-5 text-red-500" />
-            <span className="text-xs text-gray-600 font-medium">Robot Fight</span>
+          {/* Competition Icons */}
+          <div className="flex justify-between items-center mb-4 p-3 bg-gradient-to-r from-green-100/50 to-blue-100/50 rounded-lg">
+            <div className="flex items-center space-x-1">
+              <Zap className="w-5 h-5 text-red-500" />
+              <span className="text-xs text-gray-600 font-medium">Robot Fight</span>
+            </div>
+            <div className="flex items-center space-x-1">
+              <Target className="w-5 h-5 text-blue-500" />
+              <span className="text-xs text-gray-600 font-medium">Line Follower</span>
+            </div>
+            <div className="flex items-center space-x-1">
+              <Trophy className="w-5 h-5 text-green-500" />
+              <span className="text-xs text-gray-600 font-medium">Obstacle Course</span>
+            </div>
+            
           </div>
-          <div className="flex items-center space-x-1">
-            <Target className="w-5 h-5 text-blue-500" />
-            <span className="text-xs text-gray-600 font-medium">Line Follower</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <Trophy className="w-5 h-5 text-green-500" />
-            <span className="text-xs text-gray-600 font-medium">Obstacle Course</span>
+          <div className="flex justify-center items-center mb-4 p-3  bg-gradient-to-r from-orange-200/50 to-blue-100/50 rounded-lg">
+              <Gamepad2 className="w-8 h-8 text-orange-500 m-2"  />
+              <span className="text-900 text-gray-600 font-medium">Spark League (Robotic Ball Tournament)</span>
           </div>
         </div>
-        
-        <button className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-3 px-4 rounded-full text-sm transition-all shadow-lg hover:shadow-xl transform hover:scale-105 group">
+        <div className="grid grid-cols-3 gap-2 mb-4 p-3 rounded-lg border border-purple-500/20">
+            <div className="text-center">
+              <div className="text-lg font-bold text-orange-400">1 day</div>
+              <div className="text-xs text-gray-500">Competition</div>
+            </div>
+            <div className="text-center">
+              <div className="text-lg font-bold text-red-400">+100 M</div>
+              <div className="text-xs text-gray-500">Prize Pool</div>
+            </div>
+            <div className="text-center">
+              <div className="text-lg font-bold text-purple-400">200+</div>
+              <div className="text-xs text-gray-500">Participants</div>
+            </div>
+          </div>
+        <button className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-3 px-4 rounded-full text-sm transition-all shadow-lg hover:shadow-xl transform hover:scale-105 group mt-auto">
           <span className="flex items-center justify-center">
             Learn More
             <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -114,6 +136,7 @@ const GameCraftCard = ({ event, delay }) => {
 
   const handleNavigate = () => {
     navigate("/gamecraft");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -127,7 +150,7 @@ const GameCraftCard = ({ event, delay }) => {
         delay 
       }}
       viewport={{ once: true }}
-      className="relative overflow-hidden rounded-2xl bg-black text-white cursor-pointer group font-mono"
+      className="relative overflow-hidden rounded-2xl bg-black text-white cursor-pointer group font-mono flex flex-col h-auto "
       whileHover={{ 
         scale: 1.02,
         y: -4,
@@ -159,59 +182,61 @@ const GameCraftCard = ({ event, delay }) => {
       </div>
 
       {/* Code Preview */}
-      <div className="p-6 bg-gray-900 border-t border-purple-500/30">
-        <div className="space-y-2 text-sm font-mono mb-4">
-          <div className="flex items-center space-x-2 text-green-400">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span>// GameCraft 2025 Loading...</span>
+      <div className="p-6 bg-gray-900 border-t border-purple-500/30 flex flex-col flex-grow">
+        <div className="flex-grow">
+          <div className="space-y-2 text-sm font-mono mb-4">
+            <div className="flex items-center space-x-2 text-green-400">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span>// GameCraft 2025 Loading...</span>
+            </div>
+            <div className="text-purple-400">
+              const <span className="text-white">competition</span> = {"{"}
+            </div>
+            <div className="text-gray-400 ml-4">
+              duration: <span className="text-yellow-400">48</span>h,
+            </div>
+            <div className="text-gray-400 ml-4">
+              teams: <span className="text-green-400">"unlimited"</span>,
+            </div>
+            <div className="text-purple-400">{"};"}</div>
           </div>
-          <div className="text-purple-400">
-            const <span className="text-white">competition</span> = {"{"}
-          </div>
-          <div className="text-gray-400 ml-4">
-            duration: <span className="text-yellow-400">48</span>h,
-          </div>
-          <div className="text-gray-400 ml-4">
-            teams: <span className="text-green-400">"unlimited"</span>,
-          </div>
-          <div className="text-purple-400">{"};"}</div>
-        </div>
 
-        <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-          Challenge yourself to design, code, and present your own game within strict time constraints. Solo or team - your choice.
-        </p>
-        
-        <div className="space-y-2 mb-4">
-          <div className="flex items-center text-sm text-gray-400">
-            <Calendar className="w-4 h-4 mr-2 text-purple-400" />
-            February 15-16, 2025
+          <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+            Challenge yourself to design, code, and present your own game within strict time constraints. Solo or team - your choice.
+          </p>
+          
+          <div className="space-y-2 mb-4">
+            <div className="flex items-center text-sm text-gray-400">
+              <Calendar className="w-4 h-4 mr-2 text-purple-400" />
+              February 15-16, 2025
+            </div>
+            <div className="flex items-center text-sm text-gray-400">
+              <Trophy className="w-4 h-4 mr-2 text-red-400" />
+              100K DA Prize Pool
+            </div>
+            <div className="flex items-center text-sm text-gray-400">
+              <Code className="w-4 h-4 mr-2 text-green-400" />
+              Unity, Godot, HTML5 & More
+            </div>
           </div>
-          <div className="flex items-center text-sm text-gray-400">
-            <Trophy className="w-4 h-4 mr-2 text-red-400" />
-            100K DA Prize Pool
-          </div>
-          <div className="flex items-center text-sm text-gray-400">
-            <Code className="w-4 h-4 mr-2 text-green-400" />
-            Unity, Godot, HTML5 & More
-          </div>
-        </div>
 
-        <div className="grid grid-cols-3 gap-2 mb-4 p-3 bg-black/50 rounded-lg border border-purple-500/20">
-          <div className="text-center">
-            <div className="text-lg font-bold text-purple-400">48h</div>
-            <div className="text-xs text-gray-500">Competition</div>
-          </div>
-          <div className="text-center">
-            <div className="text-lg font-bold text-red-400">100K</div>
-            <div className="text-xs text-gray-500">Prize Pool</div>
-          </div>
-          <div className="text-center">
-            <div className="text-lg font-bold text-purple-400">200+</div>
-            <div className="text-xs text-gray-500">Participants</div>
+          <div className="grid grid-cols-3 gap-2 mb-4 p-3 bg-black/50 rounded-lg border border-purple-500/20">
+            <div className="text-center">
+              <div className="text-lg font-bold text-purple-400">48h</div>
+              <div className="text-xs text-gray-500">Competition</div>
+            </div>
+            <div className="text-center">
+              <div className="text-lg font-bold text-red-400">100K</div>
+              <div className="text-xs text-gray-500">Prize Pool</div>
+            </div>
+            <div className="text-center">
+              <div className="text-lg font-bold text-purple-400">200+</div>
+              <div className="text-xs text-gray-500">Participants</div>
+            </div>
           </div>
         </div>
         
-        <button className="w-full group relative px-6 py-3 bg-transparent border-2 border-purple-500 text-purple-400 font-bold rounded-lg overflow-hidden transition-all duration-300 hover:text-white">
+        <button className="w-full group relative px-6 py-3 bg-transparent border-2 border-purple-500 text-purple-400 font-bold rounded-lg overflow-hidden transition-all duration-300 hover:text-white mt-auto">
           <span className="relative z-10 flex items-center justify-center">
             REGISTER INTEREST
             <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -229,6 +254,7 @@ const PolymazeCard = ({ event, delay }) => {
 
   const handleNavigate = () => {
     navigate("/polymaze");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -242,7 +268,7 @@ const PolymazeCard = ({ event, delay }) => {
         delay 
       }}
       viewport={{ once: true }}
-      className="relative overflow-hidden rounded-2xl bg-black text-white cursor-pointer group"
+      className="relative overflow-hidden rounded-2xl bg-black text-white cursor-pointer group flex flex-col h-auto "
       whileHover={{ 
         scale: 1.02,
         y: -4,
@@ -253,90 +279,92 @@ const PolymazeCard = ({ event, delay }) => {
       <div className="absolute inset-0 bg-gradient-to-br from-orange-600/20 via-transparent to-green-600/20"></div>
       <div className="absolute -inset-2 bg-gradient-to-r from-orange-400/10 to-green-400/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
       
-      <div className="relative z-10 p-6">
-        <div className="flex items-center justify-between mb-6">
-          <div className="text-2xl font-black tracking-wider">
-            <span className="text-white">POLY</span>
-            <span className="text-orange-400">MAZE</span>
-          </div>
-          <span className="px-3 py-1 bg-green-500/20 text-green-300 border border-green-500/30 rounded-full text-xs font-medium">
-            COMPLETED
-          </span>
-        </div>
-
-        {/* Hero Image */}
-        <div className="relative mb-6">
-          <div className="w-full h-32 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl flex items-center justify-center overflow-hidden">
-            <img 
-              src={event.image} 
-              alt={event.title} 
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          </div>
-        </div>
-
-        <div className="space-y-4 mb-6">
-          <div>
-            <h3 className="text-lg font-black text-white mb-2">AUTONOMOUS MAZE NAVIGATION</h3>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Pure algorithmic brilliance meets robotics. No remote control - just sensors, programming, and innovation navigating complex mazes.
-            </p>
-          </div>
-
-          <div className="space-y-2">
-            <div className="flex items-center text-sm text-gray-400">
-              <Calendar className="w-4 h-4 mr-2 text-orange-400" />
-              June 30, 2025
+      <div className="relative z-10 p-6 flex flex-col flex-grow">
+        <div className="flex-grow">
+          <div className="flex items-center justify-between mb-6">
+            <div className="text-2xl font-black tracking-wider">
+              <span className="text-white">POLY</span>
+              <span className="text-orange-400">MAZE</span>
             </div>
-            <div className="flex items-center text-sm text-gray-400">
-              <MapPin className="w-4 h-4 mr-2 text-green-400" />
-              École Nationale Polytechnique, Algiers
-            </div>
-            <div className="flex items-center text-sm text-gray-400">
-              <Users className="w-4 h-4 mr-2 text-orange-400" />
-              International Participation
+            <span className="px-3 py-1 bg-green-500/20 text-green-300 border border-green-500/30 rounded-full text-xs font-medium">
+              COMPLETED
+            </span>
+          </div>
+
+          {/* Hero Image */}
+          <div className="relative mb-6">
+            <div className="w-full h-32 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl flex items-center justify-center overflow-hidden">
+              <img 
+                src={event.image} 
+                alt={event.title} 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             </div>
           </div>
-        </div>
 
-        {/* Competition Phases */}
-        <div className="grid grid-cols-3 gap-2 mb-6 p-3 bg-gray-900/50 rounded-xl border border-gray-800">
-          <div className="text-center">
-            <div className="text-sm font-black text-orange-400">QUALIFIERS</div>
-            <div className="text-xs text-gray-500">Multiple Waves</div>
-          </div>
-          <div className="text-center">
-            <div className="text-sm font-black text-green-400">SEMI-FINALS</div>
-            <div className="text-xs text-gray-500">Best Teams</div>
-          </div>
-          <div className="text-center">
-            <div className="text-sm font-black text-yellow-400">FINALS</div>
-            <div className="text-xs text-gray-500">Championship</div>
-          </div>
-        </div>
+          <div className="space-y-4 mb-6">
+            <div>
+              <h3 className="text-lg font-black text-white mb-2">AUTONOMOUS MAZE NAVIGATION</h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Pure algorithmic brilliance meets robotics. No remote control - just sensors, programming, and innovation navigating complex mazes.
+              </p>
+            </div>
 
-        <div className="bg-gray-900/30 p-3 rounded-xl border border-gray-700 mb-4">
-          <div className="text-center">
-            <div className="text-sm font-bold text-white mb-1">WINNERS</div>
-            <div className="flex justify-center items-center space-x-4">
-              <div className="text-center">
-                <div className="text-lg font-bold text-yellow-400">1st</div>
-                <div className="text-xs text-gray-400">Team Alpha</div>
+            <div className="space-y-2">
+              <div className="flex items-center text-sm text-gray-400">
+                <Calendar className="w-4 h-4 mr-2 text-orange-400" />
+                June 30, 2025
               </div>
-              <div className="text-center">
-                <div className="text-lg font-bold text-gray-400">2nd</div>
-                <div className="text-xs text-gray-400">Team Beta</div>
+              <div className="flex items-center text-sm text-gray-400">
+                <MapPin className="w-4 h-4 mr-2 text-green-400" />
+                École Nationale Polytechnique, Algiers
               </div>
-              <div className="text-center">
-                <div className="text-lg font-bold text-orange-400">3rd</div>
-                <div className="text-xs text-gray-400">Team Gamma</div>
+              <div className="flex items-center text-sm text-gray-400">
+                <Users className="w-4 h-4 mr-2 text-orange-400" />
+                International Participation
+              </div>
+            </div>
+          </div>
+
+          {/* Competition Phases */}
+          <div className="grid grid-cols-3 gap-2 mb-6 p-3 bg-gray-900/50 rounded-xl border border-gray-800">
+            <div className="text-center">
+              <div className="text-sm font-black text-orange-400">QUALIFIERS</div>
+              <div className="text-xs text-gray-500">Multiple Waves</div>
+            </div>
+            <div className="text-center">
+              <div className="text-sm font-black text-green-400">SEMI-FINALS</div>
+              <div className="text-xs text-gray-500">Best Teams</div>
+            </div>
+            <div className="text-center">
+              <div className="text-sm font-black text-yellow-400">FINALS</div>
+              <div className="text-xs text-gray-500">Championship</div>
+            </div>
+          </div>
+
+          <div className="bg-gray-900/30 p-3 rounded-xl border border-gray-700 mb-4">
+            <div className="text-center">
+              <div className="text-sm font-bold text-white mb-1">WINNERS</div>
+              <div className="flex justify-center items-center space-x-4">
+                <div className="text-center">
+                  <div className="text-lg font-bold text-yellow-400">1st</div>
+                  <div className="text-xs text-gray-400">Team Alpha</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-lg font-bold text-gray-400">2nd</div>
+                  <div className="text-xs text-gray-400">Team Beta</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-lg font-bold text-orange-400">3rd</div>
+                  <div className="text-xs text-gray-400">Team Gamma</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         
-        <button className="w-full group relative px-6 py-3 border-2 border-orange-400 text-orange-400 font-bold tracking-wider transition-all duration-300 hover:bg-orange-400 hover:text-black overflow-hidden">
+        <button className="w-full group relative px-6 py-3 border-2 border-orange-400 text-orange-400 font-bold tracking-wider transition-all duration-300 hover:bg-orange-400 hover:text-black overflow-hidden mt-auto">
           <span className="relative z-10 flex items-center justify-center">
             VIEW RESULTS
             <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

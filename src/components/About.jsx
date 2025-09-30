@@ -1,6 +1,18 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Target, Eye, Users, Lightbulb, Rocket, Trophy, Star, Zap } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
+import afrobot from '../assets/logos/afrobot2.png';
+import AST from '../assets/logos/ast.png';
+import GICA from '../assets/logos/GICA.png';
+import IEEE from '../assets/logos/ieee.png';
+import CDTA from '../assets/logos/cdta.png';
+import orbit from '../assets/logos/orbit.png';
+import TalebBot from '../assets/logos/taleb_bot.png';
+import Poly from '../assets/logos/polythech.png';
+import vic from '../assets/logos/vic.png';
+import fablab from '../assets/logos/fablab.png';
+import incubator from '../assets/logos/incubator.png';
+
 const FloatingOrb = ({ className, delay = 0, duration = 4 }) => (
   <motion.div
     className={`absolute rounded-full blur-3xl ${className}`}
@@ -78,14 +90,18 @@ const GlassContainer = ({ children, className = "", delay = 0 }) => (
 
 const TrustLogoSlider = () => {
   const logos = [
-    { name: "Microsoft", logo: "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=120&h=60&fit=crop" },
-    { name: "NVIDIA", logo: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=120&h=60&fit=crop" },
-    { name: "Google", logo: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=120&h=60&fit=crop" },
-    { name: "Arduino", logo: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=120&h=60&fit=crop" },
-    { name: "Boston Dynamics", logo: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=120&h=60&fit=crop" },
-    { name: "IEEE", logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=120&h=60&fit=crop" },
-    { name: "OpenAI", logo: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=120&h=60&fit=crop" },
-    { name: "Tesla", logo: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=120&h=60&fit=crop" }
+    { name: "Afrobot", logo: afrobot },
+    { name: "AST", logo: AST },
+    { name: "GICA", logo: GICA },
+    { name: "IEEE", logo: IEEE },
+    { name: "CDTA", logo: CDTA },
+    { name: "Orbit", logo: orbit },
+    { name: "Taleb Bot", logo: TalebBot },
+    { name: "Polythech", logo: Poly },
+    { name: "VIC", logo: vic },
+    { name: "Fablab", logo: fablab },
+    { name: "Incubator", logo: incubator }, 
+    
   ];
 
   const doubledLogos = [...logos, ...logos];

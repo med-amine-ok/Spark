@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Quote, Award, Star } from 'lucide-react';
-
+import pic1 from '../assets/pics/Djamel Ibrahim BELKHIRI.jpg';
+import pic2 from '../assets/pics/Ghemari-yousra.jpg';
+import pic3 from '../assets/pics/Yassine ZAOUADI.jpeg';
+import pic4 from '../assets/pics/Aymene Khaled.jpg';
 const GlassCard = ({ children, className = "", delay = 0, ...props }) => (
   <motion.div
     initial={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -55,43 +58,57 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Jennifer Liu",
-      role: "Software Engineer at Google",
-      company: "Google",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
-      content: `Spark Scientific Club transformed my understanding of robotics and AI. The hands-on workshops and mentorship I received here directly led to my internship at Google and eventual full-time offer. The collaborative environment and cutting-edge projects prepared me for real-world challenges in ways traditional coursework never could.`,
-      achievement: "Google Software Engineer",
-      year: "Class of 2023"
+      name: "BELKHIRI Djamel Ibrahim ",
+      role: "M2 Systèmes embarqués et traitement de l'information",
+      company: "Université de Paris Saclay.",
+      image: pic1,
+      content: `SPARK has been a truly a sensational, life-changing experience since the day I was elected as HOD. Together with the dedicated members of the sub-department and the Galácticos SPARK committee, we made that a glorious year. We shared scientific and mechatronics content, participated in national and international competitions, and organized amazing, engaging, and convivial events, activities, and workshops for robotics and tech enthusiasts.`,
+      achievement: "Participating in the Coupe de France de robotique 2024 (as the team leader) representing Algeria, ENP and SPARK",
+      year: "Class of 2020"
     },
     {
       id: 2,
-      name: "Marcus Johnson",
-      role: "Robotics Engineer at Boston Dynamics",
-      company: "Boston Dynamics",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-      content: `The robotics competitions at Spark pushed me beyond my comfort zone. Building autonomous robots for Afrobot taught me system integration, real-time programming, and problem-solving under pressure. These skills became the foundation of my career at Boston Dynamics, where I now work on humanoid robot development.`,
-      achievement: "Boston Dynamics Engineer",
+      name: "Khaled Aymene ",
+      role: "Electronics Engineering Student",
+      company: "Université de Paris Saclay.",
+      image: pic4,
+      content: `As an active member in Spark department, Ihad the chance to work in different project  in electronic , robotics, coding ... where U enhanced my skills in these fields, also the encouraging environment and motivated teammates gives the chance to learn more and give your best. `,
+      achievement: "Winner of the NEST Hackathon theme AI orgnized by AST Club",
       year: "Class of 2022"
     },
     {
       id: 3,
-      name: "Priya Sharma",
-      role: "AI Research Scientist at OpenAI",
-      company: "OpenAI",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-      content: `Spark's research-oriented approach and access to cutting-edge technology gave me early exposure to machine learning and neural networks. The club's emphasis on both theoretical understanding and practical implementation prepared me perfectly for my PhD and current role in AI research.`,
-      achievement: "OpenAI Research Scientist",
-      year: "Class of 2021"
+      name: "Ghemari Yousra",
+      role: "2nd year control engineering ",
+      company: "École Nationale Polytechnique",
+      image: pic2,
+      content: `Joining Spark in my first year opened my eyes to a whole new world. Watching others practice robotics sparked my own curiosity and pushed me to grow into who I am today. Now, as the cohod leading Spark, I’m proud to carry forward the same inspiration that once shaped me.`,
+      achievement: " qualified for ARC’s finals, earned 1st place in Spark League, and secured 3rd place in a racing car competition",
+      year: "Class of 2022"
     },
     {
       id: 4,
-      name: "Ahmed Hassan",
-      role: "Startup Founder - TechVision AI",
-      company: "TechVision AI",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-      content: `The entrepreneurial spirit at Spark inspired me to start my own AI company. The club's network of mentors, industry connections, and collaborative projects provided the perfect launchpad. We've now raised $2M in seed funding and our computer vision technology is being used by major retailers.`,
-      achievement: "Successful Startup Founder",
-      year: "Class of 2020"
+      name: "Yassine ZAOUADI",
+      role: "Control Systems -Automatique-",
+      company: "École Nationale Polytechnique ",
+      image: pic3,
+      content: `"The scientific branch of the Vision and Innovation Club
+
+Basically the perfect society to be part of when you want to get started in extra curricular projects, in it you’ll find fellow students that can mentor you in the beginning and also gives you the opportunity to learn new things that can be useful in the future.
+
+Not forgetting the participation in various events and competitions whether they are internal or external to the school.`,
+      achievement: "1st Prize in  the NEST Event of AST Club",
+      year: "Class of 2022"
+    },
+    {
+      id: 5,
+      name: "Bochra NEGHRA",
+      role: "Second year preparatory student",
+      company: "École Nationale Polytechnique",
+      image: "",
+      content: `SPARK was my scientific family. It was a space that celebrated every question and turned learning into an adventure. We ignited our curiosity together and made memories we will always cherish ⭐️`,
+      achievement: "IT responsible for Afrobot 2025",
+      year: "Class of 2024"
     }
   ];
 

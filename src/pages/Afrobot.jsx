@@ -1,7 +1,7 @@
 import React from 'react';
 import { Calendar, MapPin, Trophy, Users, ArrowLeft, Zap, Target, Mountain, Gamepad2, Clock, BookOpen, Shield, FileText } from 'lucide-react';
 import afrobotBg from '../assets/afrobot.png';
-
+import afrobot from '../assets/logos/afrobot2.png';
 const Afrobot = () => {
   const competitions = [
     {
@@ -86,25 +86,23 @@ const Afrobot = () => {
 
             {/* Hero Section */}
             <section className="text-center mb-16 animate-fade-in animate-delay-1">
-              <h1 className="text-5xl md:text-7xl font-black text-gray-900 mb-4 bg-gradient-to-r from-green-600 via-blue-600 to-red-600 bg-clip-text text-transparent">
-                Afrobot 2025
-              </h1>
+              <img src={afrobot} alt="Logo" className="w-auto h-20 mx-auto mb-6" />
               <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-6">
                 The National Robotics Festival of Algeria
               </h2>
               
               <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-8 text-lg text-gray-600">
                 <div className="flex items-center">
-                  <Calendar className="w-5 h-5 mr-2 text-blue-500" />
+                  <Calendar className="w-5 h-5 mr-2 text-yellow-500" />
                   <span className="font-semibold">July 7, 2025</span>
                 </div>
                 <div className="flex items-center">
-                  <MapPin className="w-5 h-5 mr-2 text-red-500" />
+                  <MapPin className="w-5 h-5 mr-2 text-blue-500" />
                   <span className="font-semibold">Open Air Theater, Sablettes, Algiers</span>
                 </div>
               </div>
 
-              <button className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105">
+              <button className="bg-gradient-to-r from-red-500 to-red-500  hover:from-red-600 hover:to-red-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105">
                 Register Now
               </button>
             </section>
