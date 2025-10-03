@@ -280,9 +280,11 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            Founded with the vision of creating a dynamic ecosystem for scientific exploration 
-            and technological advancement, Spark has been at the forefront of student innovation 
-            for years.
+            Spark is the scientific activity department for all tech enthusiasts within the Vision & Innovation Club to share their
+passion. The main objective of the department is to provide members with the right resources
+and tools -through training sessions and the E-lab, and the opportunities to participate in
+national and international competitions within the field. 
+
           </motion.p>
         </motion.div>
 

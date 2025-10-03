@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Trophy, Users, ExternalLink, Rocket, Award, Star, Zap, Target, Gamepad2, Code } from 'lucide-react';
+import ModelViewer from "../../utils/3d"; 
+import Plmz from "../../assets/logos/polymaze.webp";
+import Gamecraft from "../../assets/logos/gamecraft.png";
 
 // Afrobot Card Component
 const AfrobotCard = ({ event, delay }) => {
@@ -268,25 +271,25 @@ const PolymazeCard = ({ event, delay }) => {
         delay 
       }}
       viewport={{ once: true }}
-      className="relative overflow-hidden rounded-2xl bg-black text-white cursor-pointer group flex flex-col h-auto "
+      className="relative overflow-hidden rounded-2xl bg-black text-white cursor-pointer group flex flex-col h-auto font-orbitron"
       whileHover={{ 
         scale: 1.02,
         y: -4,
       }}
       onClick={handleNavigate}
     >
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-600/20 via-transparent to-green-600/20"></div>
-      <div className="absolute -inset-2 bg-gradient-to-r from-orange-400/10 to-green-400/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+      {/* Neutral Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-800/20 via-transparent to-gray-700/20"></div>
+      <div className="absolute -inset-2 bg-gradient-to-r from-gray-400/10 to-gray-300/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
       
       <div className="relative z-10 p-6 flex flex-col flex-grow">
         <div className="flex-grow">
           <div className="flex items-center justify-between mb-6">
+            {/* LOGO REPLACEMENT */}
             <div className="text-2xl font-black tracking-wider">
-              <span className="text-white">POLY</span>
-              <span className="text-orange-400">MAZE</span>
+              <img src={Plmz} alt="PolyMaze Logo" className="w-auto h-10" />
             </div>
-            <span className="px-3 py-1 bg-green-500/20 text-green-300 border border-green-500/30 rounded-full text-xs font-medium">
+            <span className="px-3 py-1 bg-gray-600/30 text-gray-300 border border-gray-500/40 rounded-full text-xs font-medium font-orbitron">
               COMPLETED
             </span>
           </div>
@@ -305,41 +308,41 @@ const PolymazeCard = ({ event, delay }) => {
 
           <div className="space-y-4 mb-6">
             <div>
-              <h3 className="text-lg font-black text-white mb-2">AUTONOMOUS MAZE NAVIGATION</h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <h3 className="text-lg font-black text-white mb-2 font-orbitron">AUTONOMOUS MAZE NAVIGATION</h3>
+              <p className="text-gray-400 text-sm leading-relaxed font-orbitron">
                 Pure algorithmic brilliance meets robotics. No remote control - just sensors, programming, and innovation navigating complex mazes.
               </p>
             </div>
 
             <div className="space-y-2">
-              <div className="flex items-center text-sm text-gray-400">
-                <Calendar className="w-4 h-4 mr-2 text-orange-400" />
+              <div className="flex items-center text-sm text-gray-500">
+                <Calendar className="w-4 h-4 mr-2 text-gray-300" />
                 June 30, 2025
               </div>
-              <div className="flex items-center text-sm text-gray-400">
-                <MapPin className="w-4 h-4 mr-2 text-green-400" />
+              <div className="flex items-center text-sm text-gray-500">
+                <MapPin className="w-4 h-4 mr-2 text-gray-300" />
                 École Nationale Polytechnique, Algiers
               </div>
-              <div className="flex items-center text-sm text-gray-400">
-                <Users className="w-4 h-4 mr-2 text-orange-400" />
+              <div className="flex items-center text-sm text-gray-500">
+                <Users className="w-4 h-4 mr-2 text-gray-300" />
                 International Participation
               </div>
             </div>
           </div>
 
-          {/* Competition Phases */}
-          <div className="grid grid-cols-3 gap-2 mb-6 p-3 bg-gray-900/50 rounded-xl border border-gray-800">
+          {/* Competition Phases - Silver Theme */}
+          <div className="grid grid-cols-3 gap-2 mb-6 p-3 bg-gray-900/50 rounded-xl border border-gray-700">
             <div className="text-center">
-              <div className="text-sm font-black text-orange-400">QUALIFIERS</div>
-              <div className="text-xs text-gray-500">Multiple Waves</div>
+              <div className="text-sm font-black text-gray-300">QUALIFIERS</div>
+              <div className="text-xs text-gray-600">Multiple Waves</div>
             </div>
             <div className="text-center">
-              <div className="text-sm font-black text-green-400">SEMI-FINALS</div>
-              <div className="text-xs text-gray-500">Best Teams</div>
+              <div className="text-sm font-black text-gray-300">SEMI-FINALS</div>
+              <div className="text-xs text-gray-600">Best Teams</div>
             </div>
             <div className="text-center">
-              <div className="text-sm font-black text-yellow-400">FINALS</div>
-              <div className="text-xs text-gray-500">Championship</div>
+              <div className="text-sm font-black text-gray-300">FINALS</div>
+              <div className="text-xs text-gray-600">Championship</div>
             </div>
           </div>
 
@@ -348,28 +351,29 @@ const PolymazeCard = ({ event, delay }) => {
               <div className="text-sm font-bold text-white mb-1">WINNERS</div>
               <div className="flex justify-center items-center space-x-4">
                 <div className="text-center">
-                  <div className="text-lg font-bold text-yellow-400">1st</div>
-                  <div className="text-xs text-gray-400">Team Alpha</div>
+                  <div className="text-lg font-bold text-gray-300">1st</div>
+                  <div className="text-xs text-gray-500">Team Alpha</div>
                 </div>
                 <div className="text-center">
                   <div className="text-lg font-bold text-gray-400">2nd</div>
-                  <div className="text-xs text-gray-400">Team Beta</div>
+                  <div className="text-xs text-gray-500">Team Beta</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg font-bold text-orange-400">3rd</div>
-                  <div className="text-xs text-gray-400">Team Gamma</div>
+                  <div className="text-lg font-bold text-gray-500">3rd</div>
+                  <div className="text-xs text-gray-500">Team Gamma</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         
-        <button className="w-full group relative px-6 py-3 border-2 border-orange-400 text-orange-400 font-bold tracking-wider transition-all duration-300 hover:bg-orange-400 hover:text-black overflow-hidden mt-auto">
+        {/* Silver Button */}
+        <button className="w-full group relative px-6 py-3 border-2 border-gray-400 text-gray-300 font-bold tracking-wider transition-all duration-300 hover:bg-gray-300 hover:text-black overflow-hidden mt-auto font-orbitron">
           <span className="relative z-10 flex items-center justify-center">
             VIEW RESULTS
             <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </span>
-          <div className="absolute -inset-1 bg-gradient-to-r from-orange-400/20 to-green-400/20 rounded blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute -inset-1 bg-gradient-to-r from-gray-400/20 to-gray-300/20 rounded blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </button>
       </div>
     </motion.div>

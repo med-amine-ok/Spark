@@ -97,7 +97,7 @@ const Testimonials = () => {
 Basically the perfect society to be part of when you want to get started in extra curricular projects, in it you’ll find fellow students that can mentor you in the beginning and also gives you the opportunity to learn new things that can be useful in the future.
 
 Not forgetting the participation in various events and competitions whether they are internal or external to the school.`,
-      achievement: "1st Prize in  the NEST Event of AST Club",
+      achievement: "1st Prize in  the NEST Competition of AST Club",
       year: "Class of 2022"
     },
     {

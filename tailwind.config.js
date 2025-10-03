@@ -13,6 +13,8 @@ export default {
     extend: {
       fontFamily: {
         'outfit': ['Outfit', 'sans-serif'],
+        'gilroy': ['Gilroy', 'sans-serif'],
+        'orbitron': ['Orbitron', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, ArrowLeft, MapPin, Trophy, Users, Clock, Code, Gamepad2, Star, ChevronDown, Menu, X, ExternalLink, Mail, Instagram, Facebook } from 'lucide-react';
-import GameCraftBg from '../assets/gameCraft.png';
+import GameCraftBg from '../assets/gameCraft.webp';
+import Gamecraft from "../assets/logos/gamecraft.png";
 const GameCraft = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -47,15 +48,15 @@ const GameCraft = () => {
           <div className="flex justify-between items-center py-4">
             
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-red-500 rounded-lg flex items-center justify-center">
-                <Gamepad2 className="w-5 h-5 text-white" />
+              <div className="w-auto h-2  rounded-lg flex items-center justify-center">
+                <img src={Gamecraft} alt="Logo" className="w-auto h-20 mx-auto mb-6" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-red-500 bg-clip-text text-transparent">
                 GAMECRAFT
               </span>
               
             </div>
-<div
+            <div
               className="flex items-center text-gray-600 hover:text-gray-900  transition-colors cursor-pointer animate-slide-in-left"
               onClick={() => window.history.back()}
             >

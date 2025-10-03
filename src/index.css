@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/fonts/orbitron-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Spark Scientific Club Design System
    Colors: Orange (#ff9900), White, Salmon (#ff8e7d)
    All colors MUST be HSL.
