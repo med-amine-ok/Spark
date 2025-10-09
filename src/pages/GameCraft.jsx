@@ -49,11 +49,9 @@ const GameCraft = () => {
             
             <div className="flex items-center space-x-2">
               <div className="w-auto h-2  rounded-lg flex items-center justify-center">
-                <img src={Gamecraft} alt="Logo" className="w-auto h-20 mx-auto mb-6" />
+                <img src={Gamecraft} alt="Logo" className="w-auto h-12 mx-auto " />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-red-500 bg-clip-text text-transparent">
-                GAMECRAFT
-              </span>
+              
               
             </div>
             <div

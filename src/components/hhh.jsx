@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Mail } from 'lucide-react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
 const OrreryBackground = () => {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
@@ -345,4 +346,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

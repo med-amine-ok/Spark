@@ -116,7 +116,7 @@ Not forgetting the participation in various events and competitions whether they
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(interval);
   }, [testimonials.length]);
 

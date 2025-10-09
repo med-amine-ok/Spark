@@ -1,43 +1,6 @@
 import { motion } from 'framer-motion';
 import { Instagram, Linkedin, Facebook, Mail, Phone, MapPin, ArrowUp, Sparkles } from 'lucide-react';
 
-const FloatingOrb = ({ className, delay = 0, duration = 4 }) => (
-  <motion.div
-    className={`absolute rounded-full blur-2xl ${className}`}
-    animate={{
-      y: [-20, 20, -20],
-      x: [-10, 10, -10],
-      scale: [1, 1.1, 1],
-      opacity: [0.2, 0.4, 0.2]
-    }}
-    transition={{
-      duration,
-      repeat: Infinity,
-      ease: "easeInOut",
-      delay
-    }}
-  />
-);
-
-const AnimatedBackground = () => (
-  <div className="absolute inset-0 overflow-hidden">
-    <FloatingOrb 
-      className="top-20 left-20 w-72 h-72 bg-gradient-to-br from-orange-500/30 to-red-500/30" 
-      delay={0}
-      duration={8}
-    />
-    <FloatingOrb 
-      className="bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-red-500/20 to-pink-500/20" 
-      delay={1.5}
-      duration={10}
-    />
-    <FloatingOrb 
-      className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-orange-400/25 to-yellow-500/25" 
-      delay={0.8}
-      duration={6}
-    />
-  </div>
-);
 
 const GlassCard = ({ children, className = "", delay = 0, ...props }) => (
   <motion.div
@@ -193,13 +156,18 @@ const Footer = () => {
   return (
     <footer 
       className="relative text-white py-16 overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%)'
-      }}
     >
-      <AnimatedBackground />
-      
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="border-t border-white/20 pt-8 mb-16 left-4 right-4"
+        >
+           
+        </motion.div>
       <div className="container mx-auto px-6 relative z-10">
+      
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand Section */}
           <GlassCard delay={0} className="col-span-1 lg:col-span-2">

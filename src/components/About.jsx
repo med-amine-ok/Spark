@@ -1,92 +1,94 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Target, Eye, Users, Lightbulb, Rocket, Trophy, Star, Zap } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
-import afrobot from '../assets/logos/afrobot2.png';
-import AST from '../assets/logos/ast.png';
-import GICA from '../assets/logos/GICA.png';
-import IEEE from '../assets/logos/ieee.png';
-import CDTA from '../assets/logos/cdta.png';
-import orbit from '../assets/logos/orbit.png';
-import TalebBot from '../assets/logos/taleb_bot.png';
-import Poly from '../assets/logos/polythech.png';
-import vic from '../assets/logos/vic.png';
-import fablab from '../assets/logos/fablab.png';
-import incubator from '../assets/logos/incubator.png';
+import { motion, useScroll, useTransform } from "framer-motion";
 
-const FloatingOrb = ({ className, delay = 0, duration = 4 }) => (
-  <motion.div
-    className={`absolute rounded-full blur-3xl ${className}`}
-    animate={{
-      y: [-30, 30, -30],
-      x: [-15, 15, -15],
-      scale: [1, 1.2, 1],
-      opacity: [0.1, 0.3, 0.1]
-    }}
-    transition={{
-      duration,
-      repeat: Infinity,
-      ease: "easeInOut",
-      delay
-    }}
-  />
-);
+import {
+  Target,
+  Eye,
+  Users,
+  Lightbulb,
+  Rocket,
+  Trophy,
+  Star,
+  Zap,
+} from "lucide-react";
+import React, { useState, useEffect , useRef } from "react";
+import afrobot from "../assets/logos/afrobot2.png";
+import AST from "../assets/logos/ast.png";
+import GICA from "../assets/logos/GICA.png";
+import IEEE from "../assets/logos/ieee.png";
+import CDTA from "../assets/logos/cdta.png";
+import orbit from "../assets/logos/orbit.png";
+import TalebBot from "../assets/logos/taleb_bot.png";
+import Poly from "../assets/logos/polythech.png";
+import vic from "../assets/logos/vic.png";
+import fablab from "../assets/logos/fablab.png";
+import incubator from "../assets/logos/incubator.png";
 
-const AnimatedBackground = () => (
-  <div className="absolute inset-0 overflow-hidden">
-    <FloatingOrb 
-      className="top-20 left-20 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-red-500/20" 
-      delay={0}
-      duration={12}
-    />
-    <FloatingOrb 
-      className="top-1/3 right-32 w-80 h-80 bg-gradient-to-br from-red-500/15 to-pink-500/15" 
-      delay={2}
-      duration={10}
-    />
-    <FloatingOrb 
-      className="bottom-32 left-1/4 w-88 h-88 bg-gradient-to-br from-orange-400/25 to-yellow-500/25" 
-      delay={1}
-      duration={14}
-    />
-    <FloatingOrb 
-      className="bottom-20 right-20 w-112 h-112 bg-gradient-to-br from-pink-500/10 to-purple-500/10" 
-      delay={3}
-      duration={16}
-    />
-  </div>
-);
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
 
-const GlassContainer = ({ children, className = "", delay = 0 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 40, scale: 0.95 }}
-    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-    transition={{ 
-      type: 'spring', 
-      stiffness: 200, 
-      damping: 30,
-      delay 
-    }}
-    viewport={{ once: true }}
-    className={`
-      relative overflow-hidden rounded-3xl
-      backdrop-blur-3xl border border-white/20 shadow-2xl
-      transition-all duration-700 ease-out
-      ${className}
-    `}
-    style={{
-      background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,107,53,0.06) 100%)',
-      boxShadow: '0 20px 40px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2)'
-    }}
-  >
-    <div 
-      className="absolute inset-0 opacity-0 transition-opacity duration-700"
-      style={{
-        background: 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.3) 0%, transparent 70%)',
-      }}
-    />
-    {children}
-  </motion.div>
-);
+import "react-vertical-timeline-component/style.min.css";
+
+
+const timelineData = [
+  {
+    type: "work",
+    date: "2019",
+    title: "SPARK Foundation",
+    subtitle: "Establishment of SPARK as VIC's Scientific Department",
+    description: "Launch of SPARK as the premier scientific and technology community at our university, fostering innovation and technological advancement among students",
+    icon: <Rocket />,
+  },
+  {
+    type: "education",
+    date: "2020",
+    title: "E-Lab Foundation",
+    subtitle: "Launch of Digital Innovation Hub",
+    description: "Establishment of our E-Lab platform providing students with resources, training, and hands-on experience in emerging technologies",
+    icon: <Lightbulb />,
+  },
+  {
+    type: "education",
+    date: "2021",
+    title: "Polymaze and GameCraft Creation",
+    subtitle: "Pioneering Robotics and Game Development Events",
+    description: "Launched two groundbreaking competitions: Polymaze for autonomous maze-solving robots, and GameCraft, a 48-hour game development hackathon with a 100K DA prize pool",
+    icon: <Target />,
+  },
+  {
+    type: "work",
+    date: "2022",
+    title: "National and International Competitions",
+    subtitle: "Expanding Our Competitive Presence",
+    description: "Represented Algeria in multiple international competitions, achieving recognition in robotics, AI, and space technology sectors",
+    icon: <Star />,
+  },
+  {
+    type: "work",
+    date: "2024",
+    title: "Eurobot 2024 Participation",
+    subtitle: "International Robotics Excellence",
+    description: "Competing in one of the world's most prestigious robotics competitions, showcasing Algerian innovation on a global stage",
+    icon: <Trophy />,
+  }, 
+  {
+    type: "work",
+    date: "2025",
+    title: "Afrobot 2025 Launch & Eurobot Return",
+    subtitle: "Creating Africa's Premier Robotics Competition",
+    description: "Launching Afrobot as Africa's leading robotics competition while continuing our international presence at Eurobot 2025",
+    icon: <Zap />,
+  },
+  {
+    type: "work",
+    date: "2026",
+    title: "A New Era for SPARK",
+    subtitle: "Something Big Is Coming...",
+    description: "Get ready for our most ambitious project yet. A revolutionary initiative that will redefine technology innovation in Africa. Stay tuned.",
+    icon: <Star />,
+  },
+];
 
 const TrustLogoSlider = () => {
   const logos = [
@@ -100,39 +102,40 @@ const TrustLogoSlider = () => {
     { name: "Polythech", logo: Poly },
     { name: "VIC", logo: vic },
     { name: "Fablab", logo: fablab },
-    { name: "Incubator", logo: incubator }, 
-    
+    { name: "Incubator", logo: incubator },
   ];
 
   const doubledLogos = [...logos, ...logos];
 
   return (
     <div className="relative overflow-hidden w-full ">
-      
       <motion.div
         className="flex gap-12 items-center"
         animate={{ x: [0, -100 * logos.length] }}
         transition={{
           duration: 25,
           repeat: Infinity,
-          ease: "linear"
+          ease: "linear",
         }}
         style={{ width: `${200 * logos.length}px` }}
       >
         {doubledLogos.map((logo, index) => (
           <motion.div
             key={`${logo.name}-${index}`}
-            className="flex-shrink-0 w-24 h-12 rounded-xl backdrop-blur-2xl border border-white/20 overflow-hidden shadow-lg group hover:border-white/30 transition-all duration-300"
+            className="flex-shrink-0 w-32 h-16 rounded-xl backdrop-blur-2xl border border-white/20 overflow-hidden shadow-lg group hover:border-white/30 transition-all duration-300"
             style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-              boxShadow: '0 4px 16px rgba(255,255,255,0.1), inset 0 1px 0 rgba(255,255,255,0.2)'
+              background:
+                "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)",
+              boxShadow:
+                "0 4px 16px rgba(255,255,255,0.1), inset 0 1px 0 rgba(255,255,255,0.2)",
             }}
             whileHover={{ scale: 1.05 }}
           >
-            <div 
+            <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
               style={{
-                background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 70%)',
+                background:
+                  "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 70%)",
               }}
             />
             <img
@@ -148,92 +151,122 @@ const TrustLogoSlider = () => {
 };
 
 const ImageGallery = () => {
-  const images = [
-    { id: 1, src: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop', alt: 'Space Innovation' },
-    { id: 2, src: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop', alt: 'Robotics Lab' },
-    { id: 3, src: 'https://images.unsplash.com/photo-1562408590-e32931084e23?w=400&h=300&fit=crop', alt: 'Team Collaboration' },
-    { id: 4, src: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=300&fit=crop', alt: 'Scientific Research' },
-  ];
+  const totalImages = 18; // adjust if needed
+  const [startIndex, setStartIndex] = useState(1); // 1-based index for the first image in the triad
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  const transitionDuration = 6000; // total cycle length (ms)
+  const fadeTime = 1200; // fade out/in length (ms)
+  const step = 3; // how many images to advance each cycle
+
+  const timeoutRef = useRef(null);
+  const intervalRef = useRef(null);
+
+  useEffect(() => {
+    // clean any previous timers (defensive)
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    intervalRef.current = setInterval(() => {
+      // start fade-out
+      setIsTransitioning(false);
+
+      // after fade time, advance indices and fade in
+      timeoutRef.current = setTimeout(() => {
+        setStartIndex((prev) => {
+          // advance by `step` with wrap-around (1..totalImages)
+          const next = ((prev - 1 + step) % totalImages) + 1;
+          return next;
+        });
+        setIsTransitioning(true);
+      }, fadeTime);
+    }, transitionDuration);
+
+    return () => {
+      // cleanup on unmount
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [totalImages]); // totalImages rarely changes
+
+  // helper to get modular image number (1..totalImages)
+  const imgAt = (offset) => {
+    return ((startIndex - 1 + offset) % totalImages) + 1;
+  };
+
+  // inline style for background with controlled transition timing
+  const bgStyle = (imgNum) => ({
+    backgroundImage: `url('./images/${imgNum}.webp')`,
+    opacity: isTransitioning ? 1 : 0,
+    transition: `opacity ${fadeTime}ms ease-in-out`,
+  });
 
   return (
-    <div className="grid grid-cols-2 gap-4">
-      {images.map((image, index) => (
-        <motion.div
-          key={image.id}
-          className="group relative overflow-hidden rounded-2xl backdrop-blur-2xl border border-white/15 aspect-[4/3] cursor-pointer"
-          style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,107,53,0.03) 100%)',
-          }}
-          initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
-          whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-          transition={{ 
-            delay: index * 0.1,
-            type: 'spring',
-            stiffness: 200,
-            damping: 20
-          }}
-          whileHover={{ 
-            scale: 1.05,
-            rotateY: 5,
-            z: 50,
-            transition: { duration: 0.6, ease: "easeOut" }
-          }}
-        >
-          <motion.img
-            src={image.src}
-            alt={image.alt}
-            className="w-full h-full object-cover"
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          />
-          
+    <div className="relative py-8 px-4">
+      {/* Desktop */}
+      <div className="hidden lg:block">
+        <div className="flex gap-6 justify-center">
           <motion.div
-            className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100"
-            transition={{ duration: 0.4 }}
-          />
-          
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-transparent to-pink-500/20 opacity-0 group-hover:opacity-100"
-            transition={{ duration: 0.4 }}
-          />
-          
-          <motion.div
-            className="absolute top-4 right-4 w-10 h-10 rounded-full backdrop-blur-xl border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,107,53,0.1) 100%)',
-            }}
-            initial={{ scale: 0, rotate: -90 }}
-            whileHover={{ scale: 1, rotate: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
+            className="leftImage w-1/2 flex items-center justify-center self-center rounded-3xl overflow-hidden relative shadow-2xl hover:scale-[1.02] transition-transform duration-700 h-full"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <Star className="w-5 h-5 text-white" />
+            <div
+              className="imageContainer h-[240px] rounded-2xl overflow-hidden relative w-full inset-0 bg-cover bg-center"
+              style={bgStyle(imgAt(0))}
+            />
           </motion.div>
-          
-          <motion.div
-            className="absolute bottom-4 left-4 right-4 transform translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500"
-          >
-            <div className="backdrop-blur-xl rounded-xl border border-white/15 p-3">
-              <div className="flex items-center gap-2 text-white">
-                <Zap className="w-4 h-4 text-orange-300" />
-                <span className="text-sm font-medium">{image.alt}</span>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      ))}
+
+          <div className="w-1/2 flex flex-col gap-6">
+            {[imgAt(1), imgAt(2)].map((imgNum, i) => (
+              <motion.div
+                key={i}
+                className="h-[240px] rounded-3xl overflow-hidden relative shadow-2xl hover:scale-[1.02] transition-transform duration-700"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: i * 0.15 }}
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={bgStyle(imgNum)}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile / Tablet */}
+      <div className="lg:hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[imgAt(0), imgAt(1), imgAt(2)].map((imgNum, index) => (
+            <motion.div
+              key={index}
+              className="relative h-[220px] rounded-3xl overflow-hidden shadow-xl hover:scale-[1.03] transition-transform duration-700"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.12 }}
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={bgStyle(imgNum)}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
 
 const About = () => {
   const { scrollYProgress } = useScroll();
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   return (
     <section id="about" className="min-h-screen py-20 relative overflow-hidden">
-      <AnimatedBackground />
-      
-      <motion.div 
+      <motion.div
         className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/10 to-black/15"
         style={{ y: backgroundY }}
       />
@@ -242,14 +275,15 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <motion.div 
+          <motion.div
             className="inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-2xl border border-white/25 mb-8 shadow-xl"
             style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,107,53,0.08) 100%)',
+              background:
+                "linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,107,53,0.08) 100%)",
             }}
             whileHover={{ scale: 1.05 }}
           >
@@ -262,120 +296,141 @@ const About = () => {
             <span className="text-white/90 font-medium">About Our Journey</span>
           </motion.div>
 
-          <motion.h2 
+          <motion.h2
             className="text-6xl md:text-7xl font-black mb-6 leading-tight text-white"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            About{' '}
+            About{" "}
             <span className="bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent">
               Spark
             </span>
           </motion.h2>
-
-          <motion.p 
-            className="text-xl md:text-2xl max-w-4xl mx-auto text-white/75 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            Spark is the scientific activity department for all tech enthusiasts within the Vision & Innovation Club to share their
-passion. The main objective of the department is to provide members with the right resources
-and tools -through training sessions and the E-lab, and the opportunities to participate in
-national and international competitions within the field. 
-
-          </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <GlassContainer className="p-8 lg:p-10" delay={0.2}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                { icon: Target, title: 'Our Mission', desc: 'Foster innovation and scientific thinking among students' },
-                { icon: Eye, title: 'Our Vision', desc: 'Leading scientific community bridging knowledge gaps' },
-                { icon: Users, title: 'Community', desc: 'Diverse group of passionate innovators and creators' },
-                { icon: Lightbulb, title: 'Innovation', desc: 'Breakthrough thinking through collaborative research' }
-              ].map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  className="p-6 rounded-2xl backdrop-blur-2xl border border-white/15"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,107,53,0.04) 100%)',
-                  }}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div 
-                      className="w-12 h-12  flex items-center justify-center "
-                     
-                    >
-                      <item.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                      <p className="text-white/70 text-sm leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="p-8 lg:p-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="max-w-2xl"
+            >
+              <motion.h3 
+                className="text-3xl font-bold text-white mb-6 leading-tight"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                A creative hub where ideas come to life and possibilities are endless!
+              </motion.h3>
+              
+              <motion.p 
+                className="text-white/70 text-lg mb-6 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                Spark is the scientific activity department for all tech enthusiasts
+            within the Vision & Innovation Club to share their passion. The main
+            objective of the department is to provide members with the right
+            resources and tools -through training sessions and the E-lab, and
+            the opportunities to participate in national and international
+            competitions within the field. We aim to :
+              </motion.p>
 
-            <div className="pt-8">
-              <div className="grid grid-cols-3 gap-8 text-center">
+              <motion.ul 
+                className="text-white/70 space-y-3"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
                 {[
-                  { year: '2018', event: 'Club Founded' },
-                  { year: '2020', event: 'First Major Win' },
-                  { year: '2024', event: '500+ Members' }
+                  "Drive innovation through workshops and projects.",
+                  "Foster collaboration and networking.",
+                  "Support turning ideas into reality."
                 ].map((item, index) => (
-                  <motion.div
-                    key={item.year}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6 + index * 0.15 }}
+                  <motion.li 
+                    key={index}
+                    className="flex items-center gap-3 text-lg"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + index * 0.1 }}
                   >
-                    <div className="text-3xl font-black bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-2">
-                      {item.year}
-                    </div>
-                    <p className="text-white/80 font-medium text-sm">{item.event}</p>
-                  </motion.div>
+                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-400" />
+                    {item}
+                  </motion.li>
                 ))}
-              </div>
-            </div>
-          </GlassContainer>
+              </motion.ul>
+            </motion.div>
+          </div>
 
-            <ImageGallery />
-
+          <ImageGallery />
         </div>
-         <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.4 }}
-                  viewport={{ once: true }}
-                  className="text-center mt-20"
-                >
-                  <motion.div 
-                    className="inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-3xl border border-white/25 mb-8 shadow-xl relative overflow-hidden group"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 50%, rgba(255,107,53,0.08) 100%)',
-                      boxShadow: '0 4px 20px rgba(255,107,53,0.15), inset 0 1px 0 rgba(255,255,255,0.2)'
-                    }}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                  >
-                    <div 
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"
-                      style={{
-                        background: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.3) 0%, transparent 70%)',
-                      }}
-                    />
-                    <Star className="w-5 h-5 text-orange-300 relative z-10" />
-                    <span className="text-white/90 font-medium relative z-10">Trusted By</span>
-                  </motion.div>
-                  <TrustLogoSlider />
-                </motion.div>
+        <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className=""
+            >
+<VerticalTimeline>
+          {timelineData.map((item, index) => (
+            <VerticalTimelineElement
+              key={index}
+              className={`vertical-timeline-element--${item.type}`}
+              contentStyle={{ background: "rgba(255,255,255,0.1)", color: "#fff" }}
+              date={item.date}
+              iconStyle={{ background: "rgba(37, 37, 37, 1)", color: "#ffffffff" }}
+              icon={item.icon}
+            >
+              <h3 className="vertical-timeline-element-title font-bold">{item.title}</h3>
+              <h4 className="vertical-timeline-element-subtitle">
+                {item.subtitle}
+              </h4>
+              <p>{item.description}</p>
+            </VerticalTimelineElement>
+            
+          ))}
+        </VerticalTimeline>
+              </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 200,
+            damping: 20,
+            delay: 0.4,
+          }}
+          viewport={{ once: true }}
+          className="text-center mt-20"
+        >
+          <motion.div
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-3xl border border-white/25 mb-8 mt-8shadow-xl relative overflow-hidden group"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 50%, rgba(255,107,53,0.08) 100%)",
+              boxShadow:
+                "0 4px 20px rgba(255,107,53,0.15), inset 0 1px 0 rgba(255,255,255,0.2)",
+            }}
+            whileHover={{ scale: 1.02, y: -2 }}
+          >
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.3) 0%, transparent 70%)",
+              }}
+            />
+            <Star className="w-5 h-5 text-orange-300 relative z-10" />
+            <span className="text-white/90 font-medium relative z-10">
+              Trusted By
+            </span>
+          </motion.div>
+          <TrustLogoSlider />
+        </motion.div>
       </div>
     </section>
   );
