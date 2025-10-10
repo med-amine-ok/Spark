@@ -21,7 +21,11 @@ import Gamecraft from "../assets/logos/gamecraft.png";
 import afrobot from "../assets/logos/afrobot_logo.png";
 import afrobotBg from "../assets/afrobotBg.webp";
 import GamecraftAsset from "../assets/gameCraftAsset.png";
-
+import arc from "../assets/logos/arc.webp";
+import eurobot from "../assets/logos/eurobot.webp";
+import nest from "../assets/logos/nest.png";
+import roboko from "../assets/logos/roboko.png";
+import polymaze from "../assets/logos/polymaze-02.png";
 // Afrobot Card Component
 const AfrobotCard = ({ event, delay }) => {
   const navigate = useNavigate();
@@ -674,47 +678,51 @@ const Events = () => {
 
   const pastAchievements = [
     {
+      event: "Nest Hackathon 2025",
+      achievement: "1st Prize - AI Category &  2nd Prize - Robotics Category",
+      description:
+        "Developed a groundbreaking AI solution recognized for innovation and impact, and Created a high-performance robotic system with precision and intelligence.",
+      logo: nest,
+    },
+    {
       event: "ARC Robotics Cup 2023",
       achievement: "2nd Place - Autonomous Navigation",
       description:
         "Advanced sensor integration and AI algorithms brought us to the top.",
-      logo: "./logos/arc2023.png",
+      logo: arc,
     },
-    {
-      event: "Eurobot 2024",
-      achievement: "23rd Place - Overall Competition",
-      description:
-        "Competed against 200+ international teams with innovative design.",
-      logo: "./logos/eurobot2024.png",
-    },
-    {
-      event: "Eurobot 2025",
+     {
+      event: "Eurobot ",
       achievement: "Top 23 Worldwide",
       description:
         "Ranked among the world’s best with our advanced robotic architecture.",
-      logo: "./logos/eurobot2025.png",
+      logo: eurobot,
     },
     {
-      event: "Nest Hackathon 2025",
-      achievement: "1st Prize - AI Category",
+      event: "Polymaze",
+      achievement: "1st, 2nd & 3rd Place",
       description:
-        "Developed a groundbreaking AI solution recognized for innovation and impact.",
-      logo: "./logos/nestHackathon.png",
+        "line follower robots that mastered complex mazes with speed and accuracy.",
+      logo: polymaze,
     },
-    {
-      event: "Nest Hackathon 2025",
-      achievement: "2nd Prize - Robotics Category",
-      description:
-        "Created a high-performance robotic system with precision and intelligence.",
-      logo: "./logos/nestHackathon.png",
-    },
-    {
+     {
       event: "Afrobot Festival 2025",
       achievement: "3rd Place - SparkLeague with Team FleRobot",
       description:
         "Pushed the boundaries of innovation and teamwork at Afrobot 2025.",
-      logo: "./logos/afrobot2025.png",
+      logo: afrobot,
     },
+    {
+      event: "RoboKo",
+      achievement: "2nd Round - Somo Challenge",
+      description:
+        " Demonstrated exceptional design and strategy in a competitive field.",
+      logo: roboko,
+    },
+   
+    
+    
+   
   ];
 
   return (
@@ -791,14 +799,14 @@ const Events = () => {
           }}
           viewport={{ once: true }}
         >
-          <h3 className="text-6xl font-bold text-white mb-8 text-center">
+          <h3 className="text-4xl font-bold text-white mb-8 text-center">
             - Our Achievements -
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {pastAchievements.map((achievement, index) => (
               <motion.div
                 key={achievement.event}
-                className="relative group rounded-3xl border border-white/10 p-6 text-center 
+                className="relative group rounded-3xl border border-white/10 p-3 md:p-4 text-center 
                  bg-white/5 backdrop-blur-xl shadow-[0_4px_25px_rgba(0,0,0,0.2)]
                  hover:shadow-[0_10px_45px_rgba(255,140,0,0.25)] transition-all duration-700"
                 initial={{ opacity: 0, y: 30 }}
@@ -813,7 +821,7 @@ const Events = () => {
                 viewport={{ once: true }}
               >
                 {/* Logo */}
-                <div className="relative w-16 h-16 mx-auto mb-4 rounded-2xl overflow-hidden border border-white/20 shadow-lg flex items-center justify-center bg-white/10 group-hover:scale-110 transition-transform duration-700">
+                <div className="relative w-16 h-16 mx-auto mb-3 rounded-2xl overflow-hidden border border-white/20 shadow-lg flex items-center justify-center bg-white/10 group-hover:scale-110 transition-transform duration-700">
                   <img
                     src={achievement.logo}
                     alt={achievement.event}
@@ -823,8 +831,8 @@ const Events = () => {
                 </div>
 
                 {/* Text */}
-                <div className="space-y-2">
-                  <h4 className="text-lg font-semibold text-white/90 tracking-wide">
+                <div className="space-y-1.5">
+                  <h4 className="text-base font-semibold text-white/90 tracking-wide">
                     {achievement.event}
                   </h4>
                   <p className="text-orange-300 font-medium text-sm">
