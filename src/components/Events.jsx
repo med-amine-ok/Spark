@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Calendar,
@@ -70,7 +71,11 @@ const AfrobotCard = ({ event, delay }) => {
 
         {/* Title Overlay */}
         <div className="absolute bottom-4 left-4 right-4">
-          <img src={afrobot} alt="Logo" className="w-auto h-20 mx-auto mb-4 ml-0" />
+          <img
+            src={afrobot}
+            alt="Logo"
+            className="w-auto h-20 mx-auto mb-4 ml-0"
+          />
           <h1 className="text-3xl md:text-4xl font-black text-white/80 mb-2  bg-clip-text text-transparent">
             Afrobot 2025
           </h1>
@@ -321,9 +326,6 @@ const PolymazeCard = ({ event, delay }) => {
             <div className="text-2xl font-black tracking-wider">
               <img src={Plmz} alt="PolyMaze Logo" className="w-auto h-10" />
             </div>
-            {/* <span className="px-3 py-1 bg-gray-600/30 text-gray-300 border border-gray-500/40 rounded-full text-xs font-medium font-orbitron">
-              COMPLETED
-            </span> */}
           </div>
 
           {/* Hero Image */}
@@ -467,6 +469,169 @@ const GlassCard = ({ children, className = "", delay = 0, ...props }) => (
   </motion.div>
 );
 
+
+const StatsSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const useCountUp = (target, start = 0, duration = 2000) => {
+    const [count, setCount] = useState(start);
+    useEffect(() => {
+      if (!isInView) return;
+      let startTime;
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        setCount(Math.floor(progress * target));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, [isInView, target, duration]);
+    return count;
+  };
+
+  const competitions = useCountUp(20);
+  const members = useCountUp(200);
+  const prizes = useCountUp(100);
+
+  const stats = [
+    {
+      label: "National & International Competitions",
+      value: `${competitions}+`,
+      gradient: "from-orange-400 via-red-400 to-pink-500",
+      bgGradient: "from-orange-500/10 via-red-500/10 to-pink-500/10",
+      icon: "🌍",
+      delay: 0.1
+    },
+    {
+      label: "Active & Passionate Members",
+      value: `${members}+`,
+      gradient: "from-orange-400 via-red-400 to-pink-500",
+      bgGradient: "from-orange-500/10 via-red-500/10 to-pink-500/10",
+      icon: "👥",
+      delay: 0.2
+    },
+    {
+      label: "Total Prize Value",
+      value: `${prizes}M+`,
+      subtitle: "DZD",
+      gradient: "from-orange-400 via-red-400 to-pink-500",
+      bgGradient: "from-orange-500/10 via-red-500/10 to-pink-500/10",
+      icon: "🏆",
+      delay: 0.3
+    },
+  ];
+
+  return (
+    <section
+      ref={ref}
+      className="relative py-20 px-6 overflow-hidden"
+    >
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-700" />
+      </div>
+
+      {/* Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Title */}
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+            <span className="bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent">
+              Spark
+            </span>
+            {" "}
+            <span className="text-white/90">in Numbers</span>
+          </h2>
+          
+          <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mt-4">
+            Empowering innovation and creativity through competitive excellence
+          </p>
+        </motion.div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={i}
+              className="relative group"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: stat.delay, duration: 0.7, ease: "easeOut" }}
+            >
+              {/* Card */}
+              <div className="">
+                {/* Content */}
+                <div className="relative z-10  flex flex-col items-center text-center">
+                  {/* Icon Container */}
+                  <motion.div
+                    className="relative mb-6"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
+                    <div className={`w-20 h-20 mx-auto rounded-3xl border border-white/20  
+                                  p-[2px] shadow-lg group-hover:shadow-2xl transition-shadow duration-500`}>
+                      <div className="w-full h-full rounded-2xl  
+                                    flex items-center justify-center text-4xl">
+                        {stat.icon}
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Value */}
+                  <motion.div
+                    className="mb-4"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className={`text-6xl lg:text-7xl font-black bg-gradient-to-br ${stat.gradient} 
+                                   bg-clip-text text-transparent mb-1 tracking-tight`}>
+                      {stat.value}
+                    </div>
+                    {stat.subtitle && (
+                      <div className="text-white/50 text-sm font-semibold tracking-widest">
+                        {stat.subtitle}
+                      </div>
+                    )}
+                  </motion.div>
+
+                  {/* Label */}
+                  <div className="h-px w-12 mx-auto mb-4 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                  
+                  <p className="text-white/70 text-base lg:text-lg font-medium leading-relaxed">
+                    {stat.label}
+                  </p>
+                </div>
+
+                {/* Corner Accent */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent 
+                              rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom Decoration */}
+        <motion.div
+          className="mt-20 flex justify-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+        >
+          <div className="h-1 w-32 bg-gradient-to-r from-transparent via-orange-500/50 to-transparent rounded-full" />
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+
 const Events = () => {
   const majorEvents = [
     {
@@ -510,24 +675,45 @@ const Events = () => {
   const pastAchievements = [
     {
       event: "ARC Robotics Cup 2023",
-      achievement: "1st Place - Autonomous Navigation",
+      achievement: "2nd Place - Autonomous Navigation",
       description:
         "Advanced sensor integration and AI algorithms brought us to the top.",
-      icon: Trophy,
+      logo: "./logos/arc2023.png",
     },
     {
-      event: "Eurobot 2023",
-      achievement: "3rd Place - Overall Competition",
+      event: "Eurobot 2024",
+      achievement: "23rd Place - Overall Competition",
       description:
         "Competed against 200+ international teams with innovative design.",
-      icon: Award,
+      logo: "./logos/eurobot2024.png",
     },
     {
-      event: "National Tech Olympics 2023",
-      achievement: "Gold Medal - Robotics Division",
+      event: "Eurobot 2025",
+      achievement: "Top 23 Worldwide",
       description:
-        "Dominated the national competition with cutting-edge solutions.",
-      icon: Star,
+        "Ranked among the world’s best with our advanced robotic architecture.",
+      logo: "./logos/eurobot2025.png",
+    },
+    {
+      event: "Nest Hackathon 2025",
+      achievement: "1st Prize - AI Category",
+      description:
+        "Developed a groundbreaking AI solution recognized for innovation and impact.",
+      logo: "./logos/nestHackathon.png",
+    },
+    {
+      event: "Nest Hackathon 2025",
+      achievement: "2nd Prize - Robotics Category",
+      description:
+        "Created a high-performance robotic system with precision and intelligence.",
+      logo: "./logos/nestHackathon.png",
+    },
+    {
+      event: "Afrobot Festival 2025",
+      achievement: "3rd Place - SparkLeague with Team FleRobot",
+      description:
+        "Pushed the boundaries of innovation and teamwork at Afrobot 2025.",
+      logo: "./logos/afrobot2025.png",
     },
   ];
 
@@ -583,9 +769,9 @@ const Events = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             viewport={{ once: true }}
-            className="text-2xl font-bold text-white mb-8"
+            className="text-6xl font-bold text-white mb-8 text-center "
           >
-            - Major Events
+            - Major Events -
           </motion.h3>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <AfrobotCard event={majorEvents[0]} delay={0} />
@@ -605,56 +791,59 @@ const Events = () => {
           }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-white mb-8">
-            - Our Achievements
+          <h3 className="text-6xl font-bold text-white mb-8 text-center">
+            - Our Achievements -
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pastAchievements.map((achievement, index) => (
-              <GlassCard key={achievement.event} delay={0.5 + index * 0.1}>
-                <div className="text-center">
-                  <motion.div
-                    className="w-12 h-12 mx-auto mb-4 rounded-2xl flex items-center justify-center backdrop-blur-2xl border border-white/25 shadow-lg relative overflow-hidden"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(255,107,53,0.3) 0%, rgba(247,147,30,0.2) 50%, rgba(255,255,255,0.1) 100%)",
-                      boxShadow:
-                        "0 4px 16px rgba(255,107,53,0.2), inset 0 1px 0 rgba(255,255,255,0.3)",
-                    }}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    initial={{ scale: 0, rotate: -180 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 20,
-                      delay: 0.5 + index * 0.1 + 0.2,
-                    }}
-                    viewport={{ once: true }}
-                  >
-                    <div
-                      className="absolute inset-0 rounded-2xl"
-                      style={{
-                        background:
-                          "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5) 0%, transparent 70%)",
-                      }}
-                    />
-                    <achievement.icon className="w-6 h-6 text-white relative z-10" />
-                  </motion.div>
+              <motion.div
+                key={achievement.event}
+                className="relative group rounded-3xl border border-white/10 p-6 text-center 
+                 bg-white/5 backdrop-blur-xl shadow-[0_4px_25px_rgba(0,0,0,0.2)]
+                 hover:shadow-[0_10px_45px_rgba(255,140,0,0.25)] transition-all duration-700"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8, scale: 1.03 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                  delay: 0.2 + index * 0.08,
+                }}
+                viewport={{ once: true }}
+              >
+                {/* Logo */}
+                <div className="relative w-16 h-16 mx-auto mb-4 rounded-2xl overflow-hidden border border-white/20 shadow-lg flex items-center justify-center bg-white/10 group-hover:scale-110 transition-transform duration-700">
+                  <img
+                    src={achievement.logo}
+                    alt={achievement.event}
+                    className="object-contain w-12 h-12 opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                  />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-70 transition-all duration-700" />
+                </div>
 
-                  <h4 className="text-sm font-semibold text-white/90 mb-1">
+                {/* Text */}
+                <div className="space-y-2">
+                  <h4 className="text-lg font-semibold text-white/90 tracking-wide">
                     {achievement.event}
                   </h4>
-                  <p className="text-orange-300 font-medium text-sm mb-2">
+                  <p className="text-orange-300 font-medium text-sm">
                     {achievement.achievement}
                   </p>
-                  <p className="text-xs text-white/60 leading-relaxed">
+                  <p className="text-xs text-white/60 leading-relaxed max-w-xs mx-auto">
                     {achievement.description}
                   </p>
                 </div>
-              </GlassCard>
+
+                {/* Subtle glowing line under hover */}
+                <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-[2px] bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-500 transition-all duration-700 rounded-full" />
+                
+              </motion.div>
             ))}
+            
           </div>
         </motion.div>
+        <StatsSection />
       </div>
     </section>
   );

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "@material-tailwind/react": "^2.1.10",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
@@ -51,6 +52,7 @@
     "framer-motion": "^10.18.0",
     "gsap": "^3.13.0",
     "input-otp": "^1.4.2",
+    "lottie-web": "^5.13.0",
     "lucide-react": "^0.462.0",
     "maath": "^0.10.8",
     "next-themes": "^0.3.0",

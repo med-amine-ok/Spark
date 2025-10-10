@@ -133,7 +133,7 @@ const Footer = () => {
     { name: 'About', href: '#about' },
     { name: 'Events', href: '#events' },
     { name: 'Workshops', href: '#workshops' },
-    { name: 'Gallery', href: '#gallery' },
+    { name: 'FAQ', href: '#faq' },
     { name: 'Contact', href: '#contact' }
   ];
 

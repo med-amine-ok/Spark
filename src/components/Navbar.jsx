@@ -8,7 +8,7 @@ const navigationItems = [
   { label: 'About', target: '#about' },
   { label: 'Events', target: '#events' },
   { label: 'Workshops', target: '#workshops' },
-  { label: 'Gallery', target: '#gallery' },
+  { label: 'FAQ', target: '#faq' },
   { label: 'Contact', target: '#contact' }
 ];
 

@@ -53,7 +53,7 @@ const timelineData = [
     date: "2021",
     title: "Polymaze and GameCraft Creation",
     subtitle: "Pioneering Robotics and Game Development Events",
-    description: "Launched two groundbreaking competitions: Polymaze for autonomous maze-solving robots, and GameCraft, a 48-hour game development hackathon with a 100K DA prize pool",
+    description: "Launched two groundbreaking competitions: Polymaze for autonomous maze-solving robots, and GameCraft, a 48-hour game development hackathon",
     icon: <Target />,
   },
   {
@@ -150,51 +150,57 @@ const TrustLogoSlider = () => {
   );
 };
 
+
+
 const ImageGallery = () => {
-  const totalImages = 18; // adjust if needed
-  const [startIndex, setStartIndex] = useState(1); // 1-based index for the first image in the triad
+  const totalImages = 18;
+  const [startIndex, setStartIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(true);
 
-  const transitionDuration = 6000; // total cycle length (ms)
-  const fadeTime = 1200; // fade out/in length (ms)
-  const step = 3; // how many images to advance each cycle
+  const transitionDuration = 6000;
+  const fadeTime = 1000;
+  const step = 3;
 
   const timeoutRef = useRef(null);
   const intervalRef = useRef(null);
 
+  
+  const hoverTexts = [
+    { title: "Drive Innovation", desc: "Empowering creativity through impactful projects." },
+    { title: "Learn & Grow", desc: "Sharpen your skills through real-world experience." },
+    { title: "Collaborate & Connect", desc: "Join forces to turn big ideas into real change." },
+    { title: "Turn Ideas Into Reality", desc: "We transform imagination into innovation." },
+    { title: "Spark Your Potential", desc: "A place where ideas come to life." },
+    { title: "Inspire Progress", desc: "Together, we push the boundaries of science and tech." },
+    { title: "Build the Future", desc: "Innovation begins with collaboration." },
+    { title: "Explore Possibilities", desc: "Learning, creating, and evolving — together." },
+  ];
+
+  const randomHoverText = () =>
+    hoverTexts[Math.floor(Math.random() * hoverTexts.length)];
+
+  const transitionEffect = () => {
+    setIsTransitioning(false);
+
+    timeoutRef.current = setTimeout(() => {
+      setStartIndex((prev) => ((prev - 1 + step) % totalImages) + 1);
+      setIsTransitioning(true);
+    }, fadeTime);
+  };
+
   useEffect(() => {
-    // clean any previous timers (defensive)
     if (intervalRef.current) clearInterval(intervalRef.current);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    intervalRef.current = setInterval(() => {
-      // start fade-out
-      setIsTransitioning(false);
-
-      // after fade time, advance indices and fade in
-      timeoutRef.current = setTimeout(() => {
-        setStartIndex((prev) => {
-          // advance by `step` with wrap-around (1..totalImages)
-          const next = ((prev - 1 + step) % totalImages) + 1;
-          return next;
-        });
-        setIsTransitioning(true);
-      }, fadeTime);
-    }, transitionDuration);
-
+    intervalRef.current = setInterval(transitionEffect, transitionDuration);
     return () => {
-      // cleanup on unmount
-      if (intervalRef.current) clearInterval(intervalRef.current);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      clearInterval(intervalRef.current);
+      clearTimeout(timeoutRef.current);
     };
-  }, [totalImages]); // totalImages rarely changes
+  }, [totalImages]);
 
-  // helper to get modular image number (1..totalImages)
-  const imgAt = (offset) => {
-    return ((startIndex - 1 + offset) % totalImages) + 1;
-  };
+  const imgAt = (offset) => ((startIndex - 1 + offset) % totalImages) + 1;
 
-  // inline style for background with controlled transition timing
   const bgStyle = (imgNum) => ({
     backgroundImage: `url('./images/${imgNum}.webp')`,
     opacity: isTransitioning ? 1 : 0,
@@ -203,55 +209,102 @@ const ImageGallery = () => {
 
   return (
     <div className="relative py-8 px-4">
-      {/* Desktop */}
+      {/* Desktop layout */}
       <div className="hidden lg:block">
-        <div className="flex gap-6 justify-center">
+        <div className="flex gap-8 justify-center items-center">
+          {/* Left large image */}
           <motion.div
-            className="leftImage w-1/2 flex items-center justify-center self-center rounded-3xl overflow-hidden relative shadow-2xl hover:scale-[1.02] transition-transform duration-700 h-full"
+            className="leftImage w-1/2 flex items-center justify-center relative rounded-3xl overflow-hidden shadow-lg group"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            whileHover={{ scale: 1.02, y: -4, boxShadow: "0 20px 45px rgba(0,0,0,0.5)" }}
           >
             <div
-              className="imageContainer h-[240px] rounded-2xl overflow-hidden relative w-full inset-0 bg-cover bg-center"
+              className="imageContainer h-[260px] rounded-2xl overflow-hidden relative w-full inset-0 bg-cover bg-center"
               style={bgStyle(imgAt(0))}
             />
+            {/* Hover text */}
+            <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-700 text-center px-6">
+              {(() => {
+                const { title, desc } = randomHoverText();
+                return (
+                  <>
+                    <h3 className="text-white text-2xl font-semibold mb-2 tracking-wide">
+                      {title}
+                    </h3>
+                    <p className="text-gray-200 text-sm max-w-sm">{desc}</p>
+                  </>
+                );
+              })()}
+            </div>
           </motion.div>
 
-          <div className="w-1/2 flex flex-col gap-6">
+          {/* Right stacked images */}
+          <div className="w-1/2 flex flex-col gap-8">
             {[imgAt(1), imgAt(2)].map((imgNum, i) => (
               <motion.div
                 key={i}
-                className="h-[240px] rounded-3xl overflow-hidden relative shadow-2xl hover:scale-[1.02] transition-transform duration-700"
+                className="relative h-[240px] rounded-3xl overflow-hidden shadow-lg group"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: i * 0.15 }}
+                whileHover={{ scale: 1.03, y: -4, boxShadow: "0 18px 40px rgba(0,0,0,0.45)" }}
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={bgStyle(imgNum)}
                 />
+                {/* Hover text */}
+                <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-700 text-center px-6">
+                  {(() => {
+                    const { title, desc } = randomHoverText();
+                    return (
+                      <>
+                        <h3 className="text-white text-xl font-semibold mb-1 tracking-wide">
+                          {title}
+                        </h3>
+                        <p className="text-gray-200 text-sm max-w-xs">{desc}</p>
+                      </>
+                    );
+                  })()}
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Mobile / Tablet */}
+      {/* Mobile / Tablet layout */}
       <div className="lg:hidden">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[imgAt(0), imgAt(1), imgAt(2)].map((imgNum, index) => (
             <motion.div
               key={index}
-              className="relative h-[220px] rounded-3xl overflow-hidden shadow-xl hover:scale-[1.03] transition-transform duration-700"
+              className="relative h-[220px] rounded-3xl overflow-hidden shadow-md group"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: index * 0.12 }}
+              whileHover={{ scale: 1.03, y: -4, boxShadow: "0 15px 35px rgba(0,0,0,0.45)" }}
             >
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={bgStyle(imgNum)}
               />
+              {/* Hover text */}
+              <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-700 text-center px-3">
+                {(() => {
+                  const { title, desc } = randomHoverText();
+                  return (
+                    <>
+                      <h3 className="text-white text-lg font-semibold mb-1">
+                        {title}
+                      </h3>
+                      <p className="text-gray-200 text-xs">{desc}</p>
+                    </>
+                  );
+                })()}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -310,12 +363,12 @@ const About = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div className="p-8 lg:p-10">
+          <div className="p-6 lg:p-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="max-w-2xl"
+              className="max-w-xl"
             >
               <motion.h3 
                 className="text-3xl font-bold text-white mb-6 leading-tight"
@@ -371,7 +424,7 @@ const About = () => {
         <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.1 }}
               className=""
             >
 <VerticalTimeline>
