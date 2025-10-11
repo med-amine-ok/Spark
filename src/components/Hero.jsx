@@ -1,9 +1,11 @@
-import { useRef, useMemo } from 'react';
+import { Suspense } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Calendar, Users, Mail, Sparkles, Trophy, Target } from 'lucide-react';
-import Arduino from '../3D/Arduino.tsx';
+import Arduino from '../3D/arduino';
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Environment } from '@react-three/drei'
+import CanvasLoader from '../3D/Loading.jsx'
+
 const ActionButton = ({ children, variant = "primary", className = "", ...props }) => {
   const baseClasses = "relative overflow-hidden font-semibold rounded-2xl px-8 py-4 transition-all duration-500 group backdrop-blur-2xl border";
   
@@ -71,6 +73,7 @@ const Hero = () => {
       id="home"
       className="min-h-screen  flex items-center justify-center relative overflow-hidden"
     >
+      
       <div className="container mt-28 mx-auto px-6 z-10 relative">
         <div className="text-center text-white max-w-6xl mx-auto">
           <motion.div
@@ -119,6 +122,17 @@ const Hero = () => {
             </ActionButton>
           </motion.div>
         </div>
+      </div>
+      <div className="absolute inset-0 z-0">
+        {/* <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
+          <ambientLight intensity={1.2} />
+          <directionalLight position={[2, 2, 2]} intensity={1} />
+          <Suspense fallback={<CanvasLoader />}>
+            <Environment preset="sunset" />
+            <Arduino scale={0.8} position={[0, -1, 0]} rotation={[0, Math.PI / 2, 0]} />
+            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.2} />
+          </Suspense>
+        </Canvas> */}
       </div>
 
     </section>
