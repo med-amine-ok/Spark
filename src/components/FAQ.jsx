@@ -137,7 +137,7 @@ const FAQ = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Have questions? We've got answers! Explore our FAQ section to learn more about VIC Club, our events, membership, and how you can get involved.
+            Have questions? We've got answers! 
           </motion.p>
         </motion.div>
 

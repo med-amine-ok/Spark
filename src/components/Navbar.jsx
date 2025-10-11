@@ -55,12 +55,23 @@ const CallToAction = memo(({ isMobile = false }) => (
     whileTap={{ scale: 0.95 }}
     className={`
       bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-xl 
-      shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group
+      transition-all duration-300 relative overflow-hidden group
       ${isMobile ? 'w-full py-4 text-lg' : 'px-8 py-3'}
     `}
   >
-    <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-    <span className="relative">Join Community</span>
+    
+
+  <a
+    href="https://www.instagram.com/spark_enp"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    <span className="relative z-10">Join Us on Instagram</span>
+  </a>
+
+
+
   </motion.button>
 ));
 
