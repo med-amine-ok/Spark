@@ -5,6 +5,10 @@ import pic1 from '../assets/pics/Djamel Ibrahim BELKHIRI.jpg';
 import pic2 from '../assets/pics/Ghemari-yousra.jpg';
 import pic3 from '../assets/pics/Yassine ZAOUADI.jpeg';
 import pic4 from '../assets/pics/Aymene Khaled.jpg';
+import pic5 from '../assets/pics/bchr.webp';
+import pic6 from '../assets/pics/bnwr.webp';
+import pic7 from '../assets/pics/amine.jpg';
+
 const GlassCard = ({ children, className = "", delay = 0, ...props }) => (
   <motion.div
     initial={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -58,7 +62,7 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: "BELKHIRI Djamel Ibrahim ",
+      name: "Djamel Ibrahim BELKHIRI",
       role: "M2 Systèmes embarqués et traitement de l'information",
       company: "Université de Paris Saclay.",
       image: pic1,
@@ -68,7 +72,7 @@ const Testimonials = () => {
     },
     {
       id: 2,
-      name: "Khaled Aymene ",
+      name: "Aymene KHALED ",
       role: "Electronics Engineering Student",
       company: "Université de Paris Saclay.",
       image: pic4,
@@ -78,7 +82,17 @@ const Testimonials = () => {
     },
     {
       id: 3,
-      name: "Ghemari Yousra",
+      name: "Mohamed Amine OULDKHAOUA",
+      role: "Data Science & Artificial Intelligence Engineer Student",
+      company: "Ecole Nationale Polytechnique (ENP)",
+      image: pic7,
+      content: `My journey with Spark began in my 2nd year, where I discovered a deep passion for technology through hands-on work in robotics and innovation. Since then, I’ve strengthened my expertise in web, app, and software development — continuously growing as a developer and contributor to our team’s success.`,
+      achievement: "SPARK`s Full Stack Developer – Proud to have developed the official Spark website.",
+      year: "Class of 2023"
+    },
+    {
+      id: 4,
+      name: "Yousra GHEMARI",
       role: "2nd year control engineering ",
       company: "École Nationale Polytechnique",
       image: pic2,
@@ -87,7 +101,7 @@ const Testimonials = () => {
       year: "Class of 2022"
     },
     {
-      id: 4,
+      id: 5,
       name: "Yassine ZAOUADI",
       role: "Control Systems -Automatique-",
       company: "École Nationale Polytechnique ",
@@ -101,14 +115,24 @@ Not forgetting the participation in various events and competitions whether they
       year: "Class of 2022"
     },
     {
-      id: 5,
+      id: 6,
       name: "Bochra NEGHRA",
       role: "Second year preparatory student",
       company: "École Nationale Polytechnique",
-      image: "",
+      image: pic5,
       content: `SPARK was my scientific family. It was a space that celebrated every question and turned learning into an adventure. We ignited our curiosity together and made memories we will always cherish ⭐️`,
       achievement: "IT responsible for Afrobot 2025",
       year: "Class of 2024"
+    },
+    {
+      id: 7,
+      name: "Mohamed Amine BENNOUAR",
+      role: "Automatique and Robotics Engineering Student",
+      company: "École Nationale Polytechnique",
+      image: pic6,
+      content: `Spark was an amazing opportunity for us to learn a lot about Web Development and Robotics, Moreover there were many trainings that helped us improve our soft skills`,
+      achievement: "I made a line follower robot and created my first website",
+      year: "Class of 2023"
     }
   ];
 

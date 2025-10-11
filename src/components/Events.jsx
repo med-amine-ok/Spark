@@ -806,8 +806,8 @@ const Events = () => {
             {pastAchievements.map((achievement, index) => (
               <motion.div
                 key={achievement.event}
-                className="relative group rounded-3xl border border-white/10 p-3 md:p-4 text-center 
-                 bg-white/5 backdrop-blur-xl shadow-[0_4px_25px_rgba(0,0,0,0.2)]
+                className="relative group rounded-3xl  p-3 md:p-4 text-center 
+                 
                  hover:shadow-[0_10px_45px_rgba(255,140,0,0.25)] transition-all duration-700"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}

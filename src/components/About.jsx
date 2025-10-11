@@ -108,7 +108,7 @@ const TrustLogoSlider = () => {
   const doubledLogos = [...logos, ...logos];
 
   return (
-    <div className="relative overflow-hidden w-full ">
+    <div className="relative  w-full ">
       <motion.div
         className="flex gap-12 items-center"
         animate={{ x: [0, -100 * logos.length] }}
@@ -122,20 +122,15 @@ const TrustLogoSlider = () => {
         {doubledLogos.map((logo, index) => (
           <motion.div
             key={`${logo.name}-${index}`}
-            className="flex-shrink-0 w-32 h-16 rounded-xl backdrop-blur-2xl border border-white/20 overflow-hidden shadow-lg group hover:border-white/30 transition-all duration-300"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)",
-              boxShadow:
-                "0 4px 16px rgba(255,255,255,0.1), inset 0 1px 0 rgba(255,255,255,0.2)",
-            }}
+            className="flex-shrink-0 w-28 h-14 rounded-xl  overflow-hidden shadow-lg group hover:border-white/30 transition-all duration-300"
+            
             whileHover={{ scale: 1.05 }}
           >
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
               style={{
                 background:
-                  "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 70%)",
+                  "radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.23) 0%, transparent 70%)",
               }}
             />
             <img
@@ -320,7 +315,7 @@ const About = () => {
   return (
     <section id="about" className="min-h-screen py-20 relative overflow-hidden">
       <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/10 to-black/15"
+        className="absolute inset-0 "
         style={{ y: backgroundY }}
       />
 
@@ -477,12 +472,16 @@ const About = () => {
                   "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.3) 0%, transparent 70%)",
               }}
             />
+            
             <Star className="w-5 h-5 text-orange-300 relative z-10" />
             <span className="text-white/90 font-medium relative z-10">
               Trusted By
             </span>
+            
           </motion.div>
+          <div className="overflow-hidden mt-5">
           <TrustLogoSlider />
+          </div>
         </motion.div>
       </div>
     </section>
