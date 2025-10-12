@@ -40,9 +40,9 @@ const GlassCard = ({ children, className = "", delay = 0, ...props }) => (
       group cursor-pointer h-full
       ${className}
     `}
-    style={{
-      background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,107,53,0.06) 100%)',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2)'
+   style={{
+      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255,107,53,0.06) 100%)',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255, 255, 255, 0.03)'
     }}
     whileHover={{ 
       scale: 1.02,

@@ -777,7 +777,7 @@ const Events = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             viewport={{ once: true }}
-            className="text-6xl font-bold text-white mb-8 text-center "
+            className="text-4xl font-bold text-white mb-8 text-center "
           >
             - Major Events -
           </motion.h3>
@@ -799,7 +799,7 @@ const Events = () => {
           }}
           viewport={{ once: true }}
         >
-          <h3 className="text-4xl font-bold text-white mb-8 text-center">
+          <h3 className="text-3xl font-bold text-white mb-8 text-center">
             - Our Achievements -
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -36,8 +36,8 @@ const GlassCard = ({ children, className = "", delay = 0, ...props }) => (
       ${className}
     `}
     style={{
-      background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,107,53,0.06) 100%)',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2)'
+      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255,107,53,0.06) 100%)',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255, 255, 255, 0.07)'
     }}
     whileHover={{ 
       scale: 1.02,
@@ -242,63 +242,6 @@ const AllContactInfoCard = () => {
     </GlassCard>
   );
 };
-
-const QuickContactCard = () => (
-  <GlassCard className="p-8 text-center">
-    <motion.div 
-      className="w-20 h-20 mx-auto mb-6 rounded-3xl flex items-center justify-center shadow-2xl relative overflow-hidden backdrop-blur-2xl border border-white/30"
-      style={{
-        background: 'linear-gradient(135deg, rgba(255,107,53,0.3) 0%, rgba(247,147,30,0.2) 50%, rgba(255,255,255,0.1) 100%)',
-        boxShadow: '0 8px 24px rgba(255,107,53,0.3), inset 0 1px 0 rgba(255,255,255,0.4)'
-      }}
-      initial={{ scale: 0, rotate: -180 }}
-      whileInView={{ scale: 1, rotate: 0 }}
-      transition={{ 
-        type: 'spring',
-        stiffness: 400,
-        damping: 20,
-        delay: 0.4
-      }}
-      viewport={{ once: true }}
-      whileHover={{ scale: 1.1, rotate: 5 }}
-    >
-      <div 
-        className="absolute inset-0 rounded-3xl"
-        style={{
-          background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6) 0%, transparent 70%)',
-        }}
-      />
-      <MessageSquare className="w-10 h-10 text-white relative z-10" />
-    </motion.div>
-    
-    <h3 className="text-2xl font-bold text-white mb-4">
-      Join Our Community
-    </h3>
-    <p className="text-white/70 mb-6 leading-relaxed">
-      Ready to be part of something amazing? Connect with us through our social channels 
-      or visit us at our office hours.
-    </p>
-    
-    <div className="space-y-3">
-      <ActionButton
-        onClick={() => window.open('mailto:mohamed_amine.ould_khaoua@g.enp.edu.dz', '_blank')}
-        icon={Mail}
-        variant="primary"
-        className="w-full"
-      >
-        Send Email
-      </ActionButton>
-      <ActionButton
-        onClick={() => window.open('tel:+213556045393', '_blank')}
-        icon={Phone}
-        variant="secondary"
-        className="w-full"
-      >
-        Call Us
-      </ActionButton>
-    </div>
-  </GlassCard>
-);
 
 const JoinUsCard = () => {
   return (
