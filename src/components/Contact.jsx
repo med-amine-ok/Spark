@@ -128,7 +128,7 @@ const AllContactInfoCard = () => {
       icon: MapPin,
       title: 'Location',
       value: 'National Polytechnic School of Algiers, Algeria',
-      link: 'https://maps.google.com',
+      link: 'https://maps.app.goo.gl/7rxewKMfQXorjy3v5',
       copyValue: 'National Polytechnic School of Algiers, Algeria',
       type: 'location'
     }
@@ -353,23 +353,23 @@ const SocialLinksCard = () => {
     {
       icon: Instagram,
       name: 'Instagram',
-      url: 'https://instagram.com/sparkclub',
+      url: 'https://www.instagram.com/spark_enp',
       color: 'hover:text-pink-400',
       followers: '2.5K'
     },
     {
       icon: Linkedin,
       name: 'LinkedIn',
-      url: 'https://linkedin.com/company/sparkclub',
+      url: 'https://www.linkedin.com/company/vicenp/posts/?feedView=all',
       color: 'hover:text-blue-400',
-      followers: '1.8K'
+      followers: '5k'
     },
     {
       icon: Facebook,
       name: 'Facebook',
-      url: 'https://facebook.com/sparkclub',
+      url: 'https://web.facebook.com/vic.enpa',
       color: 'hover:text-blue-500',
-      followers: '3.2K'
+      followers: '16K'
     }
   ];
 

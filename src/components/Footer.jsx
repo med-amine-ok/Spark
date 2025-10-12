@@ -138,9 +138,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Instagram, href: 'https://instagram.com/sparkclub', name: 'Instagram' },
-    { icon: Linkedin, href: 'https://linkedin.com/company/sparkclub', name: 'LinkedIn' },
-    { icon: Facebook, href: 'https://facebook.com/sparkclub', name: 'Facebook' }
+    { icon: Instagram, href: 'https://www.instagram.com/spark_enp', name: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/vicenp/posts/?feedView=all', name: 'LinkedIn' },
+    { icon: Facebook, href: 'https://web.facebook.com/vic.enpa', name: 'Facebook' }
   ];
 
   const contactInfo = [
