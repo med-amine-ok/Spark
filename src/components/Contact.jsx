@@ -245,7 +245,7 @@ const AllContactInfoCard = () => {
 
 const JoinUsCard = () => {
   return (
-    <GlassCard className="p-6 text-center">
+    <div className="p-6 text-center">
       <motion.div 
         className="w-12 h-12 mx-auto mb-4 rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden backdrop-blur-2xl border border-white/30"
         style={{
@@ -280,14 +280,14 @@ const JoinUsCard = () => {
       </p>
       
       <ActionButton
-        onClick={() => window.open('mailto:mohamed_amine.ould_khaoua@g.enp.edu.dz?subject=Join Spark Club', '_blank')}
+        onClick={() => window.open('https://www.instagram.com/spark_enp', '_blank')}
         icon={ArrowRight}
         variant="primary"
         className="w-full py-2 text-xs"
       >
         Join Us Now
       </ActionButton>
-    </GlassCard>
+    </div>
   );
 };
 
