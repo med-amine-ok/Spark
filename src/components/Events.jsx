@@ -707,7 +707,7 @@ const Events = () => {
     },
      {
       event: "Afrobot Festival 2025",
-      achievement: "3rd Place - SparkLeague with Team FleRobot",
+      achievement: "SparkLeague - 1st Place with SPARK Team & 3rd Place with FLERobot Team",
       description:
         "Pushed the boundaries of innovation and teamwork at Afrobot 2025.",
       logo: afrobot,
