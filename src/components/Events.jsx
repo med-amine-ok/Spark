@@ -1,6 +1,5 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Calendar,
   MapPin,
@@ -28,11 +27,8 @@ import roboko from "../assets/logos/roboko.png";
 import polymaze from "../assets/logos/polymaze-02.png";
 // Afrobot Card Component
 const AfrobotCard = ({ event, delay }) => {
-  const navigate = useNavigate();
-
   const handleNavigate = () => {
-    navigate("/afrobot");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.open("/afrobot", "_blank");
   };
 
   return (
@@ -171,11 +167,8 @@ const AfrobotCard = ({ event, delay }) => {
 
 // GameCraft Card Component
 const GameCraftCard = ({ event, delay }) => {
-  const navigate = useNavigate();
-
   const handleNavigate = () => {
-    navigate("/gamecraft");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.open("https://www.vic-enp.com", "_blank");
   };
 
   return (
@@ -294,11 +287,8 @@ const GameCraftCard = ({ event, delay }) => {
 
 // Polymaze Card Component
 const PolymazeCard = ({ event, delay }) => {
-  const navigate = useNavigate();
-
   const handleNavigate = () => {
-    navigate("/polymaze");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.open("https://www.vic-polymaze.com", "_blank");
   };
 
   return (
