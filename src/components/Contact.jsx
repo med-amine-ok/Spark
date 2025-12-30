@@ -421,7 +421,7 @@ const Contact = () => {
             </span>
           </h2>
           <p className="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Have questions about our club, events, or workshops? We'd love to hear from you! 
+            Have questions about our Department, events, or workshops? We'd love to hear from you! 
             Reach out and join our community of innovators.
           </p>
         </motion.div>

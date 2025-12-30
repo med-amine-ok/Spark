@@ -249,7 +249,7 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-white/60 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} Spark Scientific Club. All rights reserved.
+              © {new Date().getFullYear()} Spark Scientific Department. All rights reserved.
             </p>
             
             <motion.button

@@ -209,7 +209,7 @@ const GameCraft = () => {
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed">
                   GameCraft is the premier game development competition organized by SPARK ENP, 
-                  the innovation and gaming club at École Nationale Polytechnique.
+                  the innovation and gaming Department at École Nationale Polytechnique.
                 </p>
               </div>
 
